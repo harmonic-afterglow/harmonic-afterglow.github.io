@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Download – Afterglow</title>
+<meta name="description" content="Download Afterglow for Windows, macOS and Linux. Logitech's Harmony software isn't needed.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Afterglow">
+<meta property="og:title" content="Download Afterglow">
+<meta property="og:description" content="Download Afterglow for Windows, macOS and Linux. Logitech's Harmony software isn't needed.">
+<meta property="og:url" content="https://harmonic-afterglow.github.io/download.html">
+<meta property="og:image" content="https://harmonic-afterglow.github.io/img/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2c2350">
+<link rel="icon" href="img/afterglow-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="site">
+  <img class="sun" src="img/sun.svg" alt="">
+
+  <header class="masthead">
+    <a class="brand" href="index.html">
+      <img src="img/afterglow-icon.svg" alt="">
+      <span class="brand-name">Afterglow</span>
+    </a>
+    <ul class="utility">
+      <li><a href="https://github.com/harmonic-afterglow/afterglow">GitHub</a></li>
+      <li><a href="https://discord.gg/GEUdc2FfRH">Discord</a></li>
+      <li><a href="https://github.com/harmonic-afterglow/afterglow/releases">Releases</a></li>
+    </ul>
+  </header>
+
+  <div class="panel">
+    <nav aria-label="Sections">
+      <ul class="tabs">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="download.html" aria-current="page">Download</a></li>
+        <li><a href="remotes.html">Remotes</a></li>
+        <li><a href="guide.html">Guide</a></li>
+        <li class="tabs-end">Version <span data-rel="version">0.2.0</span></li>
+      </ul>
+    </nav>
+
+    <main id="main">
+      <div class="page-head">
+        <h1>Download Afterglow</h1>
+        <p>Version <span data-rel="version">0.2.0</span>, released <span data-rel="date">10 October 2026</span>. Logitech's Harmony software isn't needed.</p>
+      </div>
+
+      <div class="content">
+
+        <div class="grid-3">
+          <section class="box">
+            <h2>Windows</h2>
+            <div class="box-body os">
+              <img class="platform" src="img/platforms/windows.svg" alt="Windows logo">
+              <div>
+                <p class="meta" data-size="afterglow-windows-x86_64.exe">55 MB</p>
+                <div class="actions">
+                  <a class="btn" href="https://github.com/harmonic-afterglow/afterglow/releases/latest/download/afterglow-windows-x86_64.exe">
+                    <img class="icon" src="img/icons/download.svg" alt="">Download</a>
+                </div>
+                <p>The first time you plug in your remote, Afterglow offers to set up the connection to it. Windows asks for your permission once.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="box">
+            <h2>macOS</h2>
+            <div class="box-body os">
+              <img class="platform" src="img/platforms/apple.svg" alt="Apple logo">
+              <div>
+                <p class="meta" data-size="afterglow-macos-arm64.dmg afterglow-macos-x86_64.dmg">39–43 MB</p>
+                <div class="actions">
+                  <a class="btn" href="https://github.com/harmonic-afterglow/afterglow/releases/latest/download/afterglow-macos-arm64.dmg">
+                    <img class="icon" src="img/icons/download.svg" alt=""><span>Mac with Apple chip<small>M1 and newer</small></span></a>
+                  <a class="btn btn-plain" href="https://github.com/harmonic-afterglow/afterglow/releases/latest/download/afterglow-macos-x86_64.dmg"><span>Older Mac<small>with Intel processor</small></span></a>
+                </div>
+                <p>Open the download and drag Afterglow into Applications. The first time, macOS
+                  won't open it because it isn't from the App Store: try once, then go to
+                  <span class="menu-path">System Settings › Privacy &amp; Security</span> and choose
+                  <span class="menu-path">Open Anyway</span>.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="box">
+            <h2>Linux</h2>
+            <div class="box-body os">
+              <img class="platform" src="img/platforms/tux.svg" alt="Linux logo">
+              <div>
+                <p class="meta" data-size="afterglow-linux-x86_64">88 MB</p>
+                <div class="actions">
+                  <a class="btn" href="https://github.com/harmonic-afterglow/afterglow/releases/latest/download/afterglow-linux-x86_64">
+                    <img class="icon" src="img/icons/download.svg" alt="">Download</a>
+                </div>
+                <p>Make it executable and run it:</p>
+                <pre>chmod +x afterglow-linux-x86_64
+./afterglow-linux-x86_64</pre>
+                <p>On the first start it offers to set up the connection to your remote, which asks for your password once.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section class="box prerelease" hidden>
+          <h2>Try the next version</h2>
+          <div class="box-body">
+            <p><strong data-pre="version"></strong>, a test build from <span data-pre="date"></span>, is newer than the
+              version above. It may have rough edges, and it's how new remotes and fixes get tested
+              before release. <a data-pre="notes" href="https://github.com/harmonic-afterglow/afterglow/releases">What's in it ›</a></p>
+            <div class="actions">
+              <a class="btn btn-plain" data-pre-asset="afterglow-windows-x86_64.exe" href="#">Windows</a>
+              <a class="btn btn-plain" data-pre-asset="afterglow-macos-arm64.dmg" href="#">Mac with Apple chip</a>
+              <a class="btn btn-plain" data-pre-asset="afterglow-macos-x86_64.dmg" href="#">Older Mac</a>
+              <a class="btn btn-plain" data-pre-asset="afterglow-linux-x86_64" href="#">Linux</a>
+            </div>
+          </div>
+        </section>
+
+        <div class="grid-2">
+          <section class="box">
+            <h2>More downloads</h2>
+            <div class="box-body">
+                            <ul class="links">
+                <li><a href="https://github.com/harmonic-afterglow/afterglow/releases/latest/download/SHA256SUMS">Checksums for this version (SHA-256)</a></li>
+                <li><a href="https://github.com/harmonic-afterglow/afterglow/releases">Earlier versions and test builds</a></li>
+                <li><a href="https://github.com/harmonic-afterglow/afterglow/blob/main/CHANGELOG.md">What's new in each version</a></li>
+              </ul>
+            </div>
+          </section>
+          <section class="box">
+            <h2>Run it from source</h2>
+            <div class="box-body feature">
+              <img class="art-icon" src="img/icons/oxygen-development.svg" alt="">
+              <div>
+                <p>Afterglow is Python and GPL-3.0 licensed. From a checkout of the
+                  <a href="https://github.com/harmonic-afterglow/afterglow">repository</a>:</p>
+                <pre>python3 -m venv .venv
+.venv/bin/pip install -e '.[dev,gui]'
+.venv/bin/python afterglow.py</pre>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer class="footer">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="download.html">Download</a></li>
+    <li><a href="remotes.html">Remotes</a></li>
+    <li><a href="guide.html">Guide</a></li>
+    <li><a href="https://github.com/harmonic-afterglow/afterglow">Source code</a></li>
+    <li><a href="https://discord.gg/GEUdc2FfRH">Discord</a></li>
+  </ul>
+  <p>Afterglow is free software under the GNU General Public License v3. Not affiliated with, endorsed by, or connected to Logitech.
+    Harmony and Logitech are trademarks of Logitech International S.A.; product photos are of Logitech hardware.</p>
+  <p>Built on <a href="https://github.com/jaymzh/concordance">Concordance / libconcord</a>, with thanks to everyone who shared configuration dumps and tested on real remotes.</p>
+  <p>Tux by Larry Ewing, made with The GIMP. The hammer icon is from the <a href="https://invent.kde.org/frameworks/oxygen-icons">Oxygen icon theme</a> (LGPL). Windows, Apple and Linux logos belong to their owners.</p>
+  <p>This site sets no cookies and tracks nothing. It is hosted by GitHub, which keeps ordinary server logs, and pages ask GitHub for the latest version number.</p>
+</footer>
+<script src="js/releases.js"></script>
+</body>
+</html>

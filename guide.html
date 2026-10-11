@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guide – Afterglow</title>
+<meta name="description" content="Set up your Logitech Harmony remote with Afterglow in seven steps: plug it in, bring in your setup, add devices and activities, and send it to the remote.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Afterglow">
+<meta property="og:title" content="Setting up your remote – Afterglow">
+<meta property="og:description" content="Set up your Logitech Harmony remote with Afterglow in seven steps: plug it in, bring in your setup, add devices and activities, and send it to the remote.">
+<meta property="og:url" content="https://harmonic-afterglow.github.io/guide.html">
+<meta property="og:image" content="https://harmonic-afterglow.github.io/img/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#2c2350">
+<link rel="icon" href="img/afterglow-icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="site">
+  <img class="sun" src="img/sun.svg" alt="">
+
+  <header class="masthead">
+    <a class="brand" href="index.html">
+      <img src="img/afterglow-icon.svg" alt="">
+      <span class="brand-name">Afterglow</span>
+    </a>
+    <ul class="utility">
+      <li><a href="https://github.com/harmonic-afterglow/afterglow">GitHub</a></li>
+      <li><a href="https://discord.gg/GEUdc2FfRH">Discord</a></li>
+      <li><a href="https://github.com/harmonic-afterglow/afterglow/releases">Releases</a></li>
+    </ul>
+  </header>
+
+  <div class="panel">
+    <nav aria-label="Sections">
+      <ul class="tabs">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="download.html">Download</a></li>
+        <li><a href="remotes.html">Remotes</a></li>
+        <li><a href="guide.html" aria-current="page">Guide</a></li>
+        <li class="tabs-end">Version <span data-rel="version">0.2.0</span></li>
+      </ul>
+    </nav>
+
+    <main id="main">
+      <div class="page-head">
+        <h1>Setting up your remote</h1>
+        <p>Seven steps from a remote you can't change to one that does exactly what you want.
+          Most people are done in about half an hour.</p>
+      </div>
+
+      <div class="content guide">
+        <section class="box need">
+          <h2>What you'll need</h2>
+          <div class="box-body">
+            <ul>
+              <li>Your Harmony remote and its USB cable</li>
+              <li>A computer with <a href="download.html">Afterglow</a> on it</li>
+              <li>The remotes that came with your TV and other equipment, if you still have them.
+                They're handy for teaching Afterglow a button it doesn't know.</li>
+            </ul>
+          </div>
+        </section>
+
+        <ol class="guide-steps">
+          <li id="start">
+            <h2>Start Afterglow and plug in your remote</h2>
+            <p>The first time you start it, Afterglow offers to set up the connection to your
+              remote. Say yes: Windows asks for your permission once, and Linux asks for your
+              password. On a Mac there's nothing to set up.</p>
+            <p>Give the remote a few seconds after plugging it in. It isn't ready straight away.</p>
+          </li>
+
+          <li id="backup">
+            <h2>Save what's on it now</h2>
+            <p>On the <span class="menu-path">Flash</span> tab, click <span class="menu-path">Read from Remote</span>
+              and save the file. It's a copy of the remote exactly as it is today: you'll use it in the next
+              step, and it lets you go back if you ever want to.</p>
+            <figure class="shot-frame"><img src="img/guide/flash-1x.webp" srcset="img/guide/flash-1x.webp 1x, img/guide/flash-2x.webp 2x" width="640" height="98" alt="The Flash tab's buttons: Build Config, Flash to Remote, Read from Remote, Check Connection"></figure>
+          </li>
+
+          <li id="import"><span id="setup" class="anchor"></span>
+            <h2>Bring in your current setup</h2>
+            <p>Choose <span class="menu-path">File › Import .ezhex…</span> and pick the file you just saved.
+              Your devices and activities appear, ready to change, so you don't start from nothing.</p>
+            <p>Starting fresh instead? Skip this step.</p>
+          </li>
+
+          <li id="devices">
+            <h2>Add your devices</h2>
+            <p>On the <span class="menu-path">Devices</span> tab, click <span class="menu-path">+ Add Device</span>
+              and type the maker of your TV, amplifier or player. Pick the model and Afterglow fills in its buttons.</p>
+            <figure class="shot-frame"><img src="img/guide/find-device-1x.webp" srcset="img/guide/find-device-1x.webp 1x, img/guide/find-device-2x.webp 2x" width="640" height="137" alt="Finding a device by its maker"></figure>
+            <p>Can't find it? Point the device's own remote at your Harmony and use
+              <span class="menu-path">Learn from remote…</span> to teach it the buttons one by one.</p>
+            <figure class="shot-frame"><img src="img/guide/devices-1x.webp" srcset="img/guide/devices-1x.webp 1x, img/guide/devices-2x.webp 2x" width="640" height="206" alt="The Devices tab with a TV, a receiver and a Blu-ray player"></figure>
+          </li>
+
+          <li id="activities"><span id="what" class="anchor"></span>
+            <h2>Make your activities</h2>
+            <p>An activity is one button for one thing you do, like “Watch a Movie”. On the
+              <span class="menu-path">Activities</span> tab, click <span class="menu-path">+ Add Activity</span>,
+              give it a name, then tell Afterglow which device shows the picture, which one plays it,
+              and which one handles the volume.</p>
+            <figure class="shot-frame"><img src="img/guide/device-roles-1x.webp" srcset="img/guide/device-roles-1x.webp 1x, img/guide/device-roles-2x.webp 2x" width="640" height="154" alt="Choosing the projector for the picture, the Blu-ray player for control and the receiver for volume"></figure>
+            <p>Afterglow works out the rest: what to turn on, in what order, and which button goes where.
+              You can still change any button afterwards with <span class="menu-path">Edit</span>.</p>
+            <figure class="shot-frame"><img src="img/guide/activities-1x.webp" srcset="img/guide/activities-1x.webp 1x, img/guide/activities-2x.webp 2x" width="640" height="225" alt="The Activities tab with Watch TV, Watch a Movie and Listen to Music"></figure>
+          </li>
+
+          <li id="flash">
+            <h2>Send it to your remote</h2>
+            <p>Back on the <span class="menu-path">Flash</span> tab, click <span class="menu-path">Build Config</span>,
+              then <span class="menu-path">Flash to Remote</span>. Leave the remote plugged in until it says
+              it's done. It restarts with your new setup.</p>
+          </li>
+
+          <li id="try">
+            <h2>Try it out</h2>
+            <p>Unplug the remote and press one of your activities. If a device doesn't turn on or a
+              button does the wrong thing, change it in Afterglow and send it again. You can do that
+              as often as you like.</p>
+          </li>
+        </ol>
+
+        <div class="grid-2">
+          <section class="box" id="good-to-know">
+            <h2>Good to know</h2>
+            <div class="box-body">
+              <ul>
+                <li>Your projects are saved in <span class="menu-path">Documents › Afterglow</span>.</li>
+                <li>The <span class="menu-path">Remote Settings</span> tab has the clock, backlight and key beep.</li>
+                <li>Helping a friend? <span class="menu-path">File › Export Shareable Project…</span> makes one
+                  file they can open with Afterglow.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="box" id="trouble">
+            <h2>If something goes wrong</h2>
+            <div class="box-body">
+              <dl class="faq">
+                <dt>The remote isn't found</dt>
+                <dd>Wait a few seconds, then unplug it and plug it back in. On Windows or Linux, also check
+                  <span class="menu-path">Settings › Remote connection…</span></dd>
+                <dt>The remote doesn't like the new setup</dt>
+                <dd>Put the file from step 2 back with <span class="menu-path">Settings › Flash a Configuration File…</span>
+                  and tell us what happened on <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</dd>
+                <dt>Not sure about something?</dt>
+                <dd>Ask on <a href="https://discord.gg/GEUdc2FfRH">Discord</a> before you try it. We're happy to help.</dd>
+              </dl>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer class="footer">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="download.html">Download</a></li>
+    <li><a href="remotes.html">Remotes</a></li>
+    <li><a href="guide.html">Guide</a></li>
+    <li><a href="https://github.com/harmonic-afterglow/afterglow">Source code</a></li>
+    <li><a href="https://discord.gg/GEUdc2FfRH">Discord</a></li>
+  </ul>
+  <p>Afterglow is free software under the GNU General Public License v3. Not affiliated with, endorsed by, or connected to Logitech.
+    Harmony and Logitech are trademarks of Logitech International S.A.; product photos are of Logitech hardware.</p>
+  <p>Built on <a href="https://github.com/jaymzh/concordance">Concordance / libconcord</a>, with thanks to everyone who shared configuration dumps and tested on real remotes.</p>
+  <p>This site sets no cookies and tracks nothing. It is hosted by GitHub, which keeps ordinary server logs, and pages ask GitHub for the latest version number.</p>
+</footer>
+<script src="js/releases.js"></script>
+</body>
+</html>
