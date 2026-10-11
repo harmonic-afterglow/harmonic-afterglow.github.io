@@ -32,6 +32,15 @@
   var quietFocus = false; // focus put back by the script shouldn't magnify or scroll
 
   stage.hidden = false;
+
+  // photos still on their way fade in when they arrive (their space is already reserved)
+  Array.prototype.forEach.call(document.querySelectorAll('.dock-item img'), function (img) {
+    if (img.complete && img.naturalWidth) return;
+    img.classList.add('is-arriving');
+    var done = function () { img.classList.remove('is-arriving'); };
+    img.addEventListener('load', done, { once: true });
+    img.addEventListener('error', done, { once: true });
+  });
   document.documentElement.classList.add('has-dock');
 
   function isOpen() { return stage.classList.contains('is-open'); }

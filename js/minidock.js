@@ -6,6 +6,15 @@
   var MAX = 1.4, RANGE = 150;
   var wide = window.matchMedia('(min-width: 701px)');
 
+  // photos still on their way fade in when they arrive (their space is already reserved)
+  Array.prototype.forEach.call(document.querySelectorAll('.mini-item img'), function (img) {
+    if (img.complete && img.naturalWidth) return;
+    img.classList.add('is-arriving');
+    var done = function () { img.classList.remove('is-arriving'); };
+    img.addEventListener('load', done, { once: true });
+    img.addEventListener('error', done, { once: true });
+  });
+
   Array.prototype.forEach.call(document.querySelectorAll('.mini-dock'), function (dock) {
     var items = Array.prototype.slice.call(dock.querySelectorAll('.mini-item'));
     var rest = [], frame = 0, x = null;
