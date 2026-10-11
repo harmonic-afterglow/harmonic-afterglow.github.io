@@ -29,9 +29,9 @@
   var pointerX = null;
   var picked = -1;      // phone: index of the centred remote
   var openedHere = false;
+  var upgrades = 0;       // which large-view sharpening is current
   var quietFocus = false; // focus put back by the script shouldn't magnify or scroll
 
-  stage.hidden = false;
 
   // photos still on their way fade in when they arrive (their space is already reserved)
   Array.prototype.forEach.call(document.querySelectorAll('.dock-item img'), function (img) {
@@ -187,8 +187,26 @@
     var img = item.querySelector('img');
     var from = img.getBoundingClientRect();
 
-    detailImg.srcset = img.dataset.largeSrcset || '';
-    detailImg.src = img.dataset.large || img.src;
+    // start with the picture the dock already has (no waiting, so the grow can run at once),
+    // then swap in the sharper one when it has arrived and decoded - same shape, no jump
+    var token = ++upgrades;
+    detailImg.removeAttribute('srcset');
+    detailImg.src = img.currentSrc || img.src;
+    detailImg.setAttribute('width', img.getAttribute('width'));
+    detailImg.setAttribute('height', img.getAttribute('height'));
+    // the sharper picture is fetched after the grow animation, so decoding it can't cost frames
+    var sharpen = function () {
+      if (token !== upgrades || !isOpen() || !img.dataset.large || img.dataset.large === img.src) return;
+      var hi = new Image();
+      if (img.dataset.largeSrcset) hi.srcset = img.dataset.largeSrcset;
+      hi.src = img.dataset.large;
+      var swap = function () {
+        if (token !== upgrades || !isOpen()) return;          // another remote was opened since
+        if (hi.srcset) detailImg.srcset = hi.srcset;
+        detailImg.src = hi.src;
+      };
+      (hi.decode ? hi.decode() : Promise.reject()).then(swap, function () { hi.onload = swap; });
+    };
     detailImg.alt = source.querySelector('.remote-photo img').alt;
     detailImg.className = item.classList.contains('is-wide') ? 'wide' : '';
     detailInfo.innerHTML = source.querySelector('.remote-info').innerHTML;
@@ -209,13 +227,15 @@
             transform: 'translate(' + (from.left - to.left) + 'px,' + (from.top - to.top) + 'px) scale(' +
               (from.width / to.width) + ',' + (from.height / to.height) + ')' },
           { transformOrigin: 'top left', transform: 'none' }
-        ], { duration: 460, easing: 'cubic-bezier(.2, .8, .2, 1)' });
+        ], { duration: 460, easing: 'cubic-bezier(.2, .8, .2, 1)' }).finished.then(sharpen, sharpen);
         detailInfo.animate([
           { opacity: 0, transform: desktop.matches ? 'translateX(16px)' : 'translateY(16px)' },
           { opacity: 1, transform: 'none' }
         ], { duration: 360, delay: 120, easing: 'ease-out', fill: 'backwards' });
       };
-      if (detailImg.complete && detailImg.naturalWidth) grow(); else detailImg.addEventListener('load', grow, { once: true });
+      grow();   // the size is known from the dock picture's width/height, loaded or not
+    } else {
+      sharpen();
     }
     back.focus({ preventScroll: true });
   }

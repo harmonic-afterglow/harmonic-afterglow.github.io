@@ -67,6 +67,7 @@ a:hover { color: var(--link-hover); text-decoration: underline; }
 
 img { max-width: 100%; }
 [hidden] { display: none !important; }
+.fonts-wait body { visibility: hidden; }   /* see the script in each page's <head> */
 
 .skip {
   position: absolute; left: -999px; top: 8px; z-index: 10;
@@ -503,8 +504,11 @@ pre {
 
 /* ---------- remotes dock (desktop, with JavaScript) ---------- */
 
-.dock-stage[hidden] { display: none; }
-.has-dock .remote-list { display: none; }
+/* with JavaScript (flagged in <head>, before the first paint) the dock replaces the list
+   from the very first frame; without it the list stays */
+.dock-stage { display: none; }
+.js .dock-stage { display: block; }
+.js .remote-list { display: none; }
 
 .dock-stage {
   position: relative;
@@ -670,6 +674,8 @@ pre {
 .detail-back { grid-column: 1 / -1; justify-self: start; margin-bottom: 10px; }
 .detail-photo { display: grid; place-items: center; min-height: 420px; }
 .detail-photo img { height: 420px; width: auto; filter: drop-shadow(0 10px 12px rgba(0, 0, 0, .3)); }
+/* prepared as its own layer, so the grow and fly animations move a finished picture */
+.detail-photo img, .dock-fly { will-change: transform; }
 .detail-photo img.wide { width: 360px; height: auto; }
 .detail-info { padding: 14px 0 0; }
 .detail-info h2 { font-size: 30px; font-weight: 300; }
@@ -860,7 +866,7 @@ pre {
   .hero h1 { font-size: 24px; }
   .hero p { font-size: 15px; }
   .lineup { gap: 14px; }
-  .lineup img { max-height: 170px; width: auto; }
+  .lineup img { height: 170px; width: auto; }   /* a fixed height reserves the space */
   .lineup .reflect { display: none; }
   .lineup .hide-phone { display: none; }
 

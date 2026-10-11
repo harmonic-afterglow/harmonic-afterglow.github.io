@@ -16,8 +16,25 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#2c2350">
 <link rel="icon" href="img/afterglow-icon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/site.css">
+<script>
+  /* 'js' lets the CSS show script-driven parts from the first paint. The page itself stays
+     unpainted until its font is in and its scripts have run (a moment with the font preload
+     above; never more than 0.8 s), so nothing reflows or rearranges in front of the visitor.
+     This sits after the stylesheets on purpose: by then the font is declared, so asking for
+     it really waits for it. */
+  (function (root) {
+    root.classList.add('js', 'fonts-wait');
+    var waiting = 2;
+    var done = function () { if (--waiting <= 0) root.classList.remove('fonts-wait'); };
+    if (document.fonts && document.fonts.load) document.fonts.load('16px "Source Sans 3"').then(done, done);
+    else done();
+    document.addEventListener('DOMContentLoaded', done);
+    setTimeout(function () { root.classList.remove('fonts-wait'); }, 800);
+  }(document.documentElement));
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -71,8 +88,8 @@
             <img class="reflect" src="img/remotes/harmony-one-h320.webp" srcset="img/remotes/harmony-one-h320.webp 1x, img/remotes/harmony-one-h640.webp 2x, img/remotes/harmony-one-h960.webp 3x" width="80" alt="">
           </figure>
           <figure class="hide-phone">
-            <img src="img/remotes/harmony-800.svg" width="150" height="311" alt="">
-            <img class="reflect" src="img/remotes/harmony-800.svg" width="150" alt="">
+            <img src="img/remotes/harmony-800-h320.webp" srcset="img/remotes/harmony-800-h320.webp 1x, img/remotes/harmony-800-h640.webp 2x, img/remotes/harmony-800-h960.webp 3x" width="150" height="310" alt="">
+            <img class="reflect" src="img/remotes/harmony-800-h320.webp" srcset="img/remotes/harmony-800-h320.webp 1x, img/remotes/harmony-800-h640.webp 2x, img/remotes/harmony-800-h960.webp 3x" width="150" alt="">
           </figure>
           <figure>
             <img src="img/remotes/harmony-900-h320.webp" srcset="img/remotes/harmony-900-h320.webp 1x, img/remotes/harmony-900-h640.webp 2x, img/remotes/harmony-900-h960.webp 3x" width="79" height="300" alt="">
@@ -145,7 +162,7 @@
                 <span class="mini-name">Harmony 650</span>
               </a></li>
               <li><a class="mini-item" href="remotes.html#harmony-800" style="--h: 130px">
-                <img width="416" height="864" src="img/remotes/harmony-800.svg" srcset="img/remotes/harmony-800.svg 1x" alt="Harmony 800">
+                <img width="155" height="320" src="img/remotes/harmony-800-h320.webp" srcset="img/remotes/harmony-800-h320.webp 1x, img/remotes/harmony-800-h640.webp 2x, img/remotes/harmony-800-h960.webp 3x" alt="Harmony 800">
                 <span class="dock-label" aria-hidden="true"><strong>Harmony 800</strong> <span class="status status-plan">Planned</span></span>
                 <span class="mini-name">Harmony 800</span>
               </a></li>
