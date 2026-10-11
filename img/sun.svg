@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 250">
+  <!-- The sun sitting on the horizon (y = 125): glow above and below, the disc only above. -->
+  <defs>
+    <radialGradient id="glow" cx="125" cy="125" r="125" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffd683" stop-opacity=".95"/>
+      <stop offset=".22" stop-color="#f8ad45" stop-opacity=".6"/>
+      <stop offset=".55" stop-color="#e9792a" stop-opacity=".18"/>
+      <stop offset="1" stop-color="#e2702a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="disc" cx="118" cy="104" r="44" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff6d6"/>
+      <stop offset=".55" stop-color="#fbc35b"/>
+      <stop offset="1" stop-color="#ec8a1c"/>
+    </radialGradient>
+    <clipPath id="above"><rect width="250" height="125"/></clipPath>
+  </defs>
+  <circle cx="125" cy="125" r="125" fill="url(#glow)"/>
+  <circle cx="125" cy="125" r="40" fill="url(#disc)" clip-path="url(#above)"/>
+  <rect x="0" y="124.5" width="250" height="1" fill="#fff3d0" opacity=".55"/>
+</svg>
