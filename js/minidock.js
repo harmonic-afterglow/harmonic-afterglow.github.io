@@ -4,7 +4,10 @@
   'use strict';
 
   var MAX = 1.4, RANGE = 150;
-  var wide = window.matchMedia('(min-width: 701px)');
+  // the opposite of the phone layout's media query in css/site.css
+  var phoneLayout = window.matchMedia('(max-width: 480px), (pointer: coarse) and (max-width: 640px), (pointer: coarse) and (orientation: landscape) and (max-height: 500px)');
+  var wide = { get matches() { return !phoneLayout.matches; },
+    addEventListener: function (t, fn) { phoneLayout.addEventListener(t, fn); } };
 
   // photos still on their way fade in when they arrive (their space is already reserved)
   Array.prototype.forEach.call(document.querySelectorAll('.mini-item img'), function (img) {

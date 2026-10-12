@@ -10,7 +10,10 @@
   var stage = document.querySelector('.dock-stage');
   if (!stage) return;
 
-  var desktop = window.matchMedia('(min-width: 701px)');
+  // the opposite of the phone layout's media query in css/site.css
+  var phoneLayout = window.matchMedia('(max-width: 480px), (pointer: coarse) and (max-width: 640px), (pointer: coarse) and (orientation: landscape) and (max-height: 500px)');
+  var desktop = { get matches() { return !phoneLayout.matches; },
+    addEventListener: function (t, fn) { phoneLayout.addEventListener(t, fn); } };
   var still = window.matchMedia('(prefers-reduced-motion: reduce)');
   var dock = stage.querySelector('.dock');
   var items = Array.prototype.slice.call(dock.querySelectorAll('.dock-item'));

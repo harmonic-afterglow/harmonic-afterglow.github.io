@@ -41,10 +41,14 @@
 
 * { box-sizing: border-box; }
 
-html { background: var(--dusk-deep); }
+/* html takes the window's scrolling itself, so body's overflow-x: clip below applies to body
+   (clipping the overhanging sun at the page edge) instead of being handed to the window,
+   where it would still let the page scroll sideways */
+html { background: var(--dusk-deep); overflow-x: auto; }
 
 body {
   margin: 0;
+  overflow-x: clip;        /* the setting sun hangs past the page edge on purpose */
   color: var(--ink);
   font: 13px/1.55 var(--font);
   background:
@@ -79,7 +83,7 @@ img { max-width: 100%; }
 
 .site {
   position: relative;
-  width: 960px;
+  width: min(960px, calc(100% - 32px));   /* narrows with the window down to the phone layout */
   margin: 0 auto;
 }
 
@@ -195,7 +199,7 @@ img { max-width: 100%; }
 
 .hero {
   display: grid;
-  grid-template-columns: 400px 1fr;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
   gap: 20px;
   min-height: 360px;
   padding: 40px 40px 0;
@@ -292,8 +296,8 @@ img { max-width: 100%; }
 }
 .page-head p { margin: 6px 0 0; font-size: 14px; color: var(--ink-soft); max-width: 60em; }
 
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
 
 /* box with a bevelled title strip (Nintendo 2008) */
 .box {
@@ -336,7 +340,7 @@ img { max-width: 100%; }
 
 /* feature cards (home): a real picture on white, then title, text and a link,
    the way 2009 product pages showed features */
-.features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; padding: 6px 4px 4px; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 26px; padding: 6px 4px 4px; }
 .feature-card { display: flex; flex-direction: column; }
 .feature-art {
   position: relative;
@@ -345,7 +349,7 @@ img { max-width: 100%; }
   height: 190px;
   margin-bottom: 12px;
 }
-.feature-art .shot { width: 100%; height: auto; }
+.feature-art .shot { width: 100%; max-width: 380px; height: auto; }   /* never taller than its 190px frame */
 .feature-card h2 { margin: 0 0 6px; font-size: 18px; font-weight: 600; color: #24262a; letter-spacing: -.005em; }
 .feature-card p { margin: 0 0 8px; color: var(--ink-soft); font-size: 13px; }
 .feature-card > a { margin-top: auto; font-weight: 600; }
@@ -671,7 +675,7 @@ pre {
 
 .detail {
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
   grid-template-rows: auto 1fr;
   column-gap: 30px;
   padding: 22px 34px 30px;
@@ -780,7 +784,7 @@ pre {
 /* ---------- footer ---------- */
 
 .footer {
-  width: 960px;
+  width: min(960px, calc(100% - 32px));
   margin: 0 auto;
   padding: 18px 2px 40px;
   color: #9a90a8;
@@ -797,7 +801,28 @@ pre {
    control for the sections, grouped rows, full-width buttons.
    ====================================================================== */
 
-@media (max-width: 700px) {
+/* narrow desktop windows (high display scaling, zoom, a window snapped to half the screen):
+   the desktop layout, slimmed down */
+@media (max-width: 860px) {
+  .hero { padding: 30px 24px 0; grid-template-columns: minmax(0, 1fr) auto; }
+  .lineup .hide-phone { display: none; }
+  .content { padding-inline: 20px; }
+  .page-head { padding-inline: 20px; }
+  .detail { padding-inline: 20px; column-gap: 20px; }
+  .detail-photo img { height: 360px; }
+  .detail-photo img.wide { width: 300px; }
+}
+
+/* a small desktop window (mouse): the hero stacks so its text isn't squeezed */
+@media (max-width: 640px) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .lineup { justify-content: center; }
+}
+
+/* The phone layout: touch screens that are narrow (portrait) or short (a phone on its side),
+   and any window under 480px. A PC with a mouse keeps the desktop layout above that, however
+   much its display is scaled or zoomed. js/dock.js and js/minidock.js use the same query. */
+@media (max-width: 480px), (pointer: coarse) and (max-width: 640px), (pointer: coarse) and (orientation: landscape) and (max-height: 500px) {
   body {
     font-size: 15px;
     background:
