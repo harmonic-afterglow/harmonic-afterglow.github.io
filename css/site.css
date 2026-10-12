@@ -393,7 +393,13 @@ img { max-width: 100%; }
 }
 .status-ok { background: linear-gradient(#5bab49, var(--ok)); }
 .status-warn { background: linear-gradient(#dc9a2c, var(--warn)); }
-.status-dev { background: linear-gradient(#4f8ccb, var(--dev)); }
+.status-beta { background: linear-gradient(#4f8ccb, var(--dev)); }
+.status + .status { margin-left: 3px; }
+
+/* what the labels mean (Remotes page) */
+.status-key { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 12px 0 0; padding: 0; list-style: none;
+  font-size: 12px; color: var(--ink-soft); }
+.status-key li { display: flex; align-items: baseline; gap: 6px; }
 .status-plan { background: linear-gradient(#9a9fa7, var(--plan)); }
 
 /* remotes on the home page: a small dock; every remote links to its details */
@@ -880,6 +886,7 @@ pre {
   }
   .page-head h1 { font-size: 22px; font-weight: 700; text-shadow: 0 1px rgba(255, 255, 255, .7); }
   .page-head p { font-size: 14px; color: #4a515b; text-shadow: 0 1px rgba(255, 255, 255, .6); }
+  .status-key { flex-direction: column; gap: 6px; font-size: 13px; color: #4a515b; }
 
   .content { padding: 4px 10px 16px; }
   .content > * + * { margin-top: 16px; }
