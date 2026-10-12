@@ -398,6 +398,7 @@ img { max-width: 100%; }
 .status-ok { background: linear-gradient(#5bab49, var(--ok)); }
 .status-warn { background: linear-gradient(#dc9a2c, var(--warn)); }
 .status-beta { background: linear-gradient(#4f8ccb, var(--dev)); }
+.status-test { background: linear-gradient(#8a6fcf, #6346a8); }
 .status + .status { margin-left: 3px; }
 
 /* what the labels mean (Remotes page) */
