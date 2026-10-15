@@ -65,8 +65,10 @@
     each('[data-sha]', function (el) {
       var hex = sha(asset(stable, el.getAttribute('data-sha')));
       if (hex) el.textContent = hex;
-      else el.parentNode.hidden = true;        // the written-in one is for another version
+      // shown only with the version it belongs to
+      el.parentNode.hidden = el.parentNode.previousElementSibling.hidden = !hex;
     });
+    each('.os .sums', function (d) { d.hidden = !d.querySelector('dd:not([hidden])'); });
 
     var box = document.querySelector('.prerelease');
     if (!box || !pre || new Date(pre.published_at) <= new Date(stable.published_at)) return;

@@ -490,13 +490,15 @@ pre {
 .os pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 .os .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
 /* checksums: small, and whole when selected (a click on one picks it all) */
-.sha { margin: -4px 0 10px; color: var(--ink-faint); font-size: 11px; }
-.sha code, .sums code { display: block; font-size: 11px; color: var(--ink-soft); overflow-wrap: anywhere; user-select: all; }
+.sums code { display: block; font-size: 11px; color: var(--ink-soft); overflow-wrap: anywhere; user-select: all; }
 .sums { margin-top: 12px; font-size: 12px; }
 .sums summary { cursor: pointer; color: var(--link); font-weight: 600; }
 .sums dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 8px 0 0; }
 .sums dt { color: var(--ink-faint); }
 .sums dd { margin: 0; min-width: 0; }
+.os .sums { margin: -4px 0 12px; }
+.os .sums dl { grid-template-columns: 1fr; gap: 0; }
+.os .sums dd { margin-bottom: 6px; }
 
 /* ---------- remotes page ---------- */
 

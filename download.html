@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preload" href="fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/fonts.css?v=b1ec3b3e4f">
-<link rel="stylesheet" href="css/site.css?v=92c14aa92e">
+<link rel="stylesheet" href="css/site.css?v=2936186c8c">
 <script>
   /* 'js' lets the CSS show script-driven parts from the first paint. The page itself stays
      unpainted until its font is in and its scripts have run (a moment with the font preload
@@ -88,7 +88,12 @@
                   <a class="btn" href="https://github.com/harmonic-afterglow/afterglow/releases/latest/download/afterglow-windows-x86_64.exe">
                     <img class="icon" src="img/icons/download.svg" alt="">Download</a>
                 </div>
-                <p class="sha">SHA-256 <code data-sha="afterglow-windows-x86_64.exe">9d4f43ec42ee404e550c241293f575a5ced19cce2836bbe2b0d6860aa4fb2f7e</code></p>
+                <details class="sums">
+                  <summary>SHA-256 checksum</summary>
+                  <dl>
+                    <dt>afterglow-windows-x86_64.exe</dt><dd><code data-sha="afterglow-windows-x86_64.exe">9d4f43ec42ee404e550c241293f575a5ced19cce2836bbe2b0d6860aa4fb2f7e</code></dd>
+                  </dl>
+                </details>
                 <p>The first time you plug in your remote, Afterglow offers to set up the connection to it. Windows asks for your permission once.</p>
               </div>
             </div>
@@ -105,8 +110,13 @@
                     <img class="icon" src="img/icons/download.svg" alt=""><span>Mac with Apple chip<small>M1 and newer</small></span></a>
                   <a class="btn btn-plain" href="https://github.com/harmonic-afterglow/afterglow/releases/latest/download/afterglow-macos-x86_64.dmg"><span>Mac with Intel chip<small>macOS 13 and later</small></span></a>
                 </div>
-                <p class="sha">SHA-256, Apple chip <code data-sha="afterglow-macos-arm64.dmg">d04e6e06849232b436c05de7bb7f47d37951751fc36f09996ba06bd4e5bff435</code></p>
-                <p class="sha">SHA-256, Intel <code data-sha="afterglow-macos-x86_64.dmg">188f91aeee983ef65764dab0761604c400a5fd7efc4864c37167b4f2d57e48c6</code></p>
+                <details class="sums">
+                  <summary>SHA-256 checksum</summary>
+                  <dl>
+                    <dt>afterglow-macos-arm64.dmg</dt><dd><code data-sha="afterglow-macos-arm64.dmg">d04e6e06849232b436c05de7bb7f47d37951751fc36f09996ba06bd4e5bff435</code></dd>
+                    <dt>afterglow-macos-x86_64.dmg</dt><dd><code data-sha="afterglow-macos-x86_64.dmg">188f91aeee983ef65764dab0761604c400a5fd7efc4864c37167b4f2d57e48c6</code></dd>
+                  </dl>
+                </details>
                 <p>Open the download and drag Afterglow into Applications. The first time, macOS
                   won't open it because it isn't from the App Store: try once, then go to
                   <span class="menu-path">System Settings › Privacy &amp; Security</span> and choose
@@ -125,7 +135,12 @@
                   <a class="btn" href="https://github.com/harmonic-afterglow/afterglow/releases/latest/download/afterglow-linux-x86_64">
                     <img class="icon" src="img/icons/download.svg" alt="">Download</a>
                 </div>
-                <p class="sha">SHA-256 <code data-sha="afterglow-linux-x86_64">9e3b035f8a563d45601a693bf325b9b91b983a3d3535665f59d5247d748716cd</code></p>
+                <details class="sums">
+                  <summary>SHA-256 checksum</summary>
+                  <dl>
+                    <dt>afterglow-linux-x86_64</dt><dd><code data-sha="afterglow-linux-x86_64">9e3b035f8a563d45601a693bf325b9b91b983a3d3535665f59d5247d748716cd</code></dd>
+                  </dl>
+                </details>
                 <p>Make it executable and run it:</p>
                 <pre>chmod +x afterglow-linux-x86_64
 ./afterglow-linux-x86_64</pre>
@@ -208,6 +223,6 @@
   <p>Tux by Larry Ewing, made with The GIMP. The hammer icon is from the <a href="https://invent.kde.org/frameworks/oxygen-icons">Oxygen icon theme</a> (LGPL). Windows, Apple and Linux logos belong to their owners.</p>
   <p>This site sets no cookies and tracks nothing. It is hosted by GitHub, which keeps ordinary server logs, and pages ask GitHub for the latest version number.</p>
 </footer>
-<script src="js/releases.js?v=6ef92b592b"></script>
+<script src="js/releases.js?v=49de1107e9"></script>
 </body>
 </html>
