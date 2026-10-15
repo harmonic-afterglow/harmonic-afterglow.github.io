@@ -1024,6 +1024,8 @@ pre {
   .remote-photo .wide { width: 240px; }
 
   .side-nav { position: static; }
+  .sums dl { grid-template-columns: 1fr; gap: 0; }
+  .sums dd { margin-bottom: 8px; }
   .prose { background: #fff; border: 1px solid #a7afb9; border-radius: 3px; padding: 14px; }
 
   .footer { padding: 6px 16px calc(24px + env(safe-area-inset-bottom, 0px)); color: #59616c; text-shadow: 0 1px rgba(255, 255, 255, .6); }
