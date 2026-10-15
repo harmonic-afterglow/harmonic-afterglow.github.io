@@ -34,6 +34,10 @@
   function asset(release, name) {
     return (release.assets || []).filter(function (a) { return a.name === name; })[0];
   }
+  // GitHub publishes each file's SHA-256 with the release, as "sha256:<hex>"
+  function sha(file) {
+    return file && /^sha256:[0-9a-f]{64}$/.test(file.digest || '') ? file.digest.slice(7) : null;
+  }
   function each(sel, fn) { Array.prototype.forEach.call(document.querySelectorAll(sel), fn); }
 
   function show(releases) {
@@ -58,6 +62,12 @@
       el.textContent = lo === hi ? lo + ' MB' : lo + '–' + hi + ' MB';
     });
 
+    each('[data-sha]', function (el) {
+      var hex = sha(asset(stable, el.getAttribute('data-sha')));
+      if (hex) el.textContent = hex;
+      else el.parentNode.hidden = true;        // the written-in one is for another version
+    });
+
     var box = document.querySelector('.prerelease');
     if (!box || !pre || new Date(pre.published_at) <= new Date(stable.published_at)) return;
     box.querySelector('[data-pre="version"]').textContent = 'Version ' + version(pre.tag_name);
@@ -68,6 +78,11 @@
       var file = asset(pre, a.getAttribute('data-pre-asset'));
       if (file) { a.href = file.browser_download_url; a.title = mb(file.size); any = true; }
       else a.hidden = true;                    // not every test build has every platform
+    });
+    each('.prerelease [data-pre-sha]', function (el) {
+      var hex = sha(asset(pre, el.getAttribute('data-pre-sha')));
+      el.textContent = hex || '';
+      el.parentNode.hidden = el.parentNode.previousElementSibling.hidden = !hex;
     });
     if (any) box.hidden = false;
   }
