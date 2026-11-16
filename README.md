@@ -11,5 +11,5 @@ The site's own code and text are under the [MIT license](LICENSE). Not covered b
   *Logitech* are trademarks of Logitech International S.A. This project is not affiliated
   with Logitech.
 - **Source Sans 3**: SIL Open Font License 1.1, see `fonts/OFL.txt`.
-- **Oxygen icons** (computer, chat bubble, hammer): KDE Oxygen icon theme, LGPL.
+- **Oxygen icons** (computer, chat bubble, hammer, heart): KDE Oxygen icon theme, LGPL.
 - **Tux**: Larry Ewing, made with The GIMP. Windows and Apple logos belong to their owners.
