@@ -86,16 +86,16 @@
       el.textContent = hex || '';
       el.parentNode.hidden = el.parentNode.previousElementSibling.hidden = !hex;
     });
-    // a platform with no file in this build disappears whole; one with a single file needs no menu
+    // a platform with no file in this build disappears whole; one with nothing else to offer needs no arrow
     each('.prerelease .split', function (g) {
       var items = g.querySelectorAll('.split-menu [data-pre-asset]:not([hidden])').length;
       g.hidden = !g.querySelector('[data-pre-asset]:not([hidden])');
-      g.querySelector('.split-more').hidden = items < 2;
+      g.querySelector('.split-more').hidden = items < 1;
     });
     if (any) box.hidden = false;
   }
 
-  // the split buttons' arrows open their menus on a touch screen, where there is no hover
+  // a split button's arrow opens and closes its menu; a click elsewhere or Escape closes it
   document.addEventListener('click', function (e) {
     var more = e.target.closest && e.target.closest('.split-more');
     each('.split.open', function (g) {

@@ -491,12 +491,13 @@ pre {
 .os .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
 /* checksums: small, and whole when selected (a click on one picks it all) */
 .sums code { display: block; font-size: 11px; color: var(--ink-soft); overflow-wrap: anywhere; user-select: all; }
-/* the test build's downloads: a split button per platform. The main part downloads the usual
-   build; the rest open on hover, or from the arrow on a touch screen */
+/* downloads: a split button per platform. The main part downloads the usual build; its arrow
+   lists the others */
 .split-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
 .split { position: relative; display: inline-flex; }
 .split .split-main { border-radius: 2px 0 0 2px; }
-.split .split-more { border-left: 0; border-radius: 0 2px 2px 0; padding: 0 9px; font-size: 11px; }
+.split .split-more { border-left: 0; border-radius: 0 2px 2px 0; padding: 0 10px; }
+.caret { display: block; width: 0; height: 0; border: 4px solid transparent; border-top: 5px solid currentColor; border-bottom: 0; }
 .split-more[hidden] + .split-menu { display: none !important; }
 .split:has(.split-more[hidden]) .split-main { border-radius: 2px; }
 .split-menu {
@@ -514,7 +515,7 @@ pre {
   border-radius: 0 0 2px 2px;
   box-shadow: 0 6px 14px rgba(0, 0, 0, .18);
 }
-.split:hover .split-menu, .split.open .split-menu { display: block; }
+.split.open .split-menu { display: block; }
 .split-menu a { display: block; padding: 6px 14px; color: var(--ink); font-weight: 600; white-space: nowrap; }
 .split-menu a small { display: block; font-weight: 400; font-size: 11px; color: var(--ink-faint); }
 .split-menu a:hover, .split-menu a:focus-visible { background: linear-gradient(#f8ab45, #e4800f); color: #fff; text-decoration: none; }
