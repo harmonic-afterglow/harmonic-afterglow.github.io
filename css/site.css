@@ -491,11 +491,34 @@ pre {
 .os .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
 /* checksums: small, and whole when selected (a click on one picks it all) */
 .sums code { display: block; font-size: 11px; color: var(--ink-soft); overflow-wrap: anywhere; user-select: all; }
-/* the test build's downloads, a column per platform */
-.pre-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 12px; }
-.pre-group { display: flex; flex-direction: column; gap: 6px; align-items: stretch; }
-.pre-group h3 { margin: 0 0 2px; font-size: 13px; color: var(--ink-soft); }
-.pre-group .btn { justify-content: center; text-align: center; }
+/* the test build's downloads: a split button per platform. The main part downloads the usual
+   build; the rest open on hover, or from the arrow on a touch screen */
+.split-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.split { position: relative; display: inline-flex; }
+.split .split-main { border-radius: 2px 0 0 2px; }
+.split .split-more { border-left: 0; border-radius: 0 2px 2px 0; padding: 0 9px; font-size: 11px; }
+.split-more[hidden] + .split-menu { display: none !important; }
+.split:has(.split-more[hidden]) .split-main { border-radius: 2px; }
+.split-menu {
+  display: none;
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  top: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 3px 0;
+  list-style: none;
+  background: var(--panel);
+  border: 1px solid #aeb3ba;
+  border-radius: 0 0 2px 2px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .18);
+}
+.split:hover .split-menu, .split.open .split-menu { display: block; }
+.split-menu a { display: block; padding: 6px 14px; color: var(--ink); font-weight: 600; white-space: nowrap; }
+.split-menu a small { display: block; font-weight: 400; font-size: 11px; color: var(--ink-faint); }
+.split-menu a:hover, .split-menu a:focus-visible { background: linear-gradient(#f8ab45, #e4800f); color: #fff; text-decoration: none; }
+.split-menu a:hover small, .split-menu a:focus-visible small { color: #fff; opacity: .9; }
 .sums { margin-top: 12px; font-size: 12px; }
 .sums summary { cursor: pointer; color: var(--link); font-weight: 600; }
 .sums dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 8px 0 0; }
@@ -1031,7 +1054,9 @@ pre {
   .remote-photo .wide { width: 240px; }
 
   .side-nav { position: static; }
-  .pre-groups { grid-template-columns: 1fr; }
+  .split-row { flex-direction: column; }
+  .split .split-main { flex: 1; }
+  .split-menu { right: 0; }
   .sums dl { grid-template-columns: 1fr; gap: 0; }
   .sums dd { margin-bottom: 8px; }
   .prose { background: #fff; border: 1px solid #a7afb9; border-radius: 3px; padding: 14px; }
@@ -1107,6 +1132,7 @@ pre {
   .dock-label { border-color: #000; background: linear-gradient(#55585f, #34363b); }
   .dock-label::after { border-top-color: #34363b; }
 
+  .split-menu { border-color: #0f1012; box-shadow: 0 6px 14px rgba(0, 0, 0, .6); }
   .btn-plain, .dock-arrow {
     border-color: #0f1012;
     background: linear-gradient(#4a4e56, #2c2f35);

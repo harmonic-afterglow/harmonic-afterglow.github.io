@@ -86,10 +86,29 @@
       el.textContent = hex || '';
       el.parentNode.hidden = el.parentNode.previousElementSibling.hidden = !hex;
     });
-    // a platform with no file in this build disappears whole
-    each('.prerelease .pre-group', function (g) { g.hidden = !g.querySelector('[data-pre-asset]:not([hidden])'); });
+    // a platform with no file in this build disappears whole; one with a single file needs no menu
+    each('.prerelease .split', function (g) {
+      var items = g.querySelectorAll('.split-menu [data-pre-asset]:not([hidden])').length;
+      g.hidden = !g.querySelector('[data-pre-asset]:not([hidden])');
+      g.querySelector('.split-more').hidden = items < 2;
+    });
     if (any) box.hidden = false;
   }
+
+  // the split buttons' arrows open their menus on a touch screen, where there is no hover
+  document.addEventListener('click', function (e) {
+    var more = e.target.closest && e.target.closest('.split-more');
+    each('.split.open', function (g) {
+      if (!more || g !== more.parentNode) { g.classList.remove('open'); g.querySelector('.split-more').setAttribute('aria-expanded', 'false'); }
+    });
+    if (more) {
+      var open = more.parentNode.classList.toggle('open');
+      more.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') each('.split.open', function (g) { g.classList.remove('open'); });
+  });
 
   load().then(show).catch(function () { /* keep the written-in values */ });
 }());
