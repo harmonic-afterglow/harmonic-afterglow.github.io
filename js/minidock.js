@@ -20,12 +20,19 @@
 
   Array.prototype.forEach.call(document.querySelectorAll('.mini-dock'), function (dock) {
     var items = Array.prototype.slice.call(dock.querySelectorAll('.mini-item'));
-    var rest = [], frame = 0, x = null;
+    var rest = [], restW = [], frame = 0, x = null;
 
+    // centres at rest, read with the size transition off: mid-animation sizes would leave
+    // them wrong. A pointer still over the row is followed again straight after
     function measure() {
+      dock.classList.add('is-measuring');
+      dock.style.setProperty('--shift', '0px');
       items.forEach(function (it) { it.style.setProperty('--s', 1); });
       var left = dock.getBoundingClientRect().left - dock.scrollLeft;
-      rest = items.map(function (it) { var r = it.getBoundingClientRect(); return r.left - left + r.width / 2; });
+      restW = [];
+      rest = items.map(function (it) { var r = it.getBoundingClientRect(); restW.push(r.width); return r.left - left + r.width / 2; });
+      dock.classList.remove('is-measuring');
+      if (x != null) schedule();
     }
     function scale(d) {
       var t = Math.max(0, 1 - Math.abs(d) / RANGE);
@@ -42,6 +49,13 @@
         if (Math.abs(d) < best) { best = Math.abs(d); near = i; }
       });
       items.forEach(function (it, i) { it.classList.toggle('is-near', x != null && i === near && best < RANGE); });
+      // keep the spot under the pointer under it while the remotes grow (see js/dock.js)
+      if (x == null || near < 0 || !restW[near]) { dock.style.setProperty('--shift', '0px'); return; }
+      var f = Math.max(0, Math.min(1, (x - (rest[near] - restW[near] / 2)) / restW[near]));
+      var shift = parseFloat(dock.style.getPropertyValue('--shift')) || 0;
+      var r = items[near].getBoundingClientRect();
+      var want = dock.getBoundingClientRect().left - dock.scrollLeft + x;
+      dock.style.setProperty('--shift', (want - (r.left - shift + f * r.width)).toFixed(1) + 'px');
     }
     function schedule() { if (!frame) frame = requestAnimationFrame(paint); }
 
@@ -51,6 +65,9 @@
       cx = e.clientX;
       x = e.clientX - dock.getBoundingClientRect().left + dock.scrollLeft;
       schedule();
+    });
+    dock.addEventListener('pointerenter', function (e) {
+      if (wide.matches && e.pointerType !== 'touch') measure();
     });
     dock.addEventListener('pointerleave', function () {
       dock.classList.add('is-settling');
@@ -69,6 +86,13 @@
     });
     function settle() { if (pan) pan.update(); if (wide.matches) measure(); else items.forEach(function (it) { it.style.removeProperty('--s'); }); }
     window.addEventListener('resize', settle);
+    // its width also changes without a window resize (a scrollbar, a panel, fonts)
+    if (window.ResizeObserver) {
+      var sized = 0;
+      new ResizeObserver(function () {
+        if (!sized) sized = requestAnimationFrame(function () { sized = 0; settle(); });
+      }).observe(dock);
+    }
     window.addEventListener('load', settle);
     wide.addEventListener('change', settle);
     settle();

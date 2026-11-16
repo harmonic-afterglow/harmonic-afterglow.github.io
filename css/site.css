@@ -630,6 +630,12 @@ pre {
 .dock-item img, .mini-item img { transition: opacity .35s ease-out; }
 .dock-item img.is-arriving, .mini-item img.is-arriving { opacity: 0; }
 .dock.is-settling .dock-item img { transition: height .22s ease-out, opacity .35s ease-out; }
+/* the row slides so the remote under the pointer stays under it (js/dock.js, anchor) */
+.dock li, .mini-dock li { transform: translateX(var(--shift, 0px)); }
+.dock.is-settling li, .mini-dock.is-settling li { transition: transform .22s ease-out; }
+/* while the scripts read the remotes' resting places, sizes jump straight there */
+.dock.is-measuring .dock-item img, .mini-dock.is-measuring .mini-item img,
+.dock.is-measuring li, .mini-dock.is-measuring li { transition: none !important; }
 
 .dock-label {
   position: absolute;

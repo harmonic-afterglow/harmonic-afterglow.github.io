@@ -28,6 +28,7 @@
   var START = 'harmony-900';               // the strip opens centred on this one
 
   var rest = [];        // desktop: item centres with nothing magnified
+  var restW = [];       // ... and their widths
   var frame = 0;
   var pointerX = null;
   var picked = -1;      // phone: index of the centred remote
@@ -63,13 +64,19 @@
 
   function measure() {
     if (!desktop.matches || isOpen()) return;
-    // centres in row coordinates (scroll included), so they hold while the row pans
+    // centres in row coordinates (scroll included), so they hold while the row pans. Read
+    // with the size transition off: mid-animation sizes would leave the centres wrong
+    dock.classList.add('is-measuring');
+    dock.style.setProperty('--shift', '0px');
     items.forEach(function (it) { it.style.setProperty('--s', 1); });
     var s = dock.getBoundingClientRect().left - dock.scrollLeft;
+    restW = [];
     rest = items.map(function (it) {
       var r = it.getBoundingClientRect();
+      restW.push(r.width);
       return r.left - s + r.width / 2;
     });
+    dock.classList.remove('is-measuring');
   }
 
   function magnify(x) {
@@ -82,6 +89,19 @@
     items.forEach(function (it, i) {
       it.classList.toggle('is-near', x != null && i === nearest && best < DESK_RANGE);
     });
+    anchor(x, nearest);
+  }
+
+  // Growing remotes push their neighbours, and a centred row moves as a whole, so the remote
+  // under the pointer would drift from it. Slide the row so the spot the pointer is on stays
+  // under it, as the macOS dock does.
+  function anchor(x, k) {
+    if (x == null || k < 0 || !restW[k]) { dock.style.setProperty('--shift', '0px'); return; }
+    var f = Math.max(0, Math.min(1, (x - (rest[k] - restW[k] / 2)) / restW[k]));
+    var shift = parseFloat(dock.style.getPropertyValue('--shift')) || 0;
+    var r = items[k].getBoundingClientRect();
+    var want = dock.getBoundingClientRect().left - dock.scrollLeft + x;
+    dock.style.setProperty('--shift', (want - (r.left - shift + f * r.width)).toFixed(1) + 'px');
   }
 
   dock.addEventListener('pointermove', function (e) {
@@ -90,6 +110,11 @@
     lastClientX = e.clientX;
     pointerX = e.clientX - dock.getBoundingClientRect().left + dock.scrollLeft;
     schedule();
+  });
+  // measure afresh each time the pointer comes in, so it starts from the row as it is now
+  dock.addEventListener('pointerenter', function (e) {
+    if (!desktop.matches || e.pointerType === 'touch' || isOpen()) return;
+    measure();
   });
   dock.addEventListener('pointerleave', function () {
     if (!desktop.matches) return;
@@ -321,9 +346,10 @@
     if (desktop.matches) {
       padStrip();
       measure();
-      magnify(null);
+      magnify(pointerX);       // keep following a pointer that is over the row
     } else {
       items.forEach(function (it) { it.classList.remove('is-near'); });
+      dock.style.setProperty('--shift', '0px');
       padStrip();
       follow();
     }
@@ -345,6 +371,15 @@
 
   window.addEventListener('hashchange', function () { route(true); });
   window.addEventListener('resize', layout);
+  // the row's width also changes without a window resize: a page scrollbar coming or going,
+  // a panel beside the page, fonts settling. Measure again whenever its box changes
+  if (window.ResizeObserver) {
+    var sized = 0;
+    new ResizeObserver(function () {
+      if (sized) return;
+      sized = requestAnimationFrame(function () { sized = 0; layout(); });
+    }).observe(dock);
+  }
   desktop.addEventListener('change', function () { touched = false; settle(); });
   items.forEach(function (it) {
     var img = it.querySelector('img');
