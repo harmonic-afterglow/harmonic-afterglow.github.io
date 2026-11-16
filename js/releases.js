@@ -86,6 +86,8 @@
       el.textContent = hex || '';
       el.parentNode.hidden = el.parentNode.previousElementSibling.hidden = !hex;
     });
+    // a platform with no file in this build disappears whole
+    each('.prerelease .pre-group', function (g) { g.hidden = !g.querySelector('[data-pre-asset]:not([hidden])'); });
     if (any) box.hidden = false;
   }
 

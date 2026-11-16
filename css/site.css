@@ -491,6 +491,11 @@ pre {
 .os .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
 /* checksums: small, and whole when selected (a click on one picks it all) */
 .sums code { display: block; font-size: 11px; color: var(--ink-soft); overflow-wrap: anywhere; user-select: all; }
+/* the test build's downloads, a column per platform */
+.pre-groups { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 12px; }
+.pre-group { display: flex; flex-direction: column; gap: 6px; align-items: stretch; }
+.pre-group h3 { margin: 0 0 2px; font-size: 13px; color: var(--ink-soft); }
+.pre-group .btn { justify-content: center; text-align: center; }
 .sums { margin-top: 12px; font-size: 12px; }
 .sums summary { cursor: pointer; color: var(--link); font-weight: 600; }
 .sums dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 8px 0 0; }
@@ -1026,6 +1031,7 @@ pre {
   .remote-photo .wide { width: 240px; }
 
   .side-nav { position: static; }
+  .pre-groups { grid-template-columns: 1fr; }
   .sums dl { grid-template-columns: 1fr; gap: 0; }
   .sums dd { margin-bottom: 8px; }
   .prose { background: #fff; border: 1px solid #a7afb9; border-radius: 3px; padding: 14px; }
