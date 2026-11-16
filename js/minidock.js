@@ -48,14 +48,11 @@
         it.parentNode.style.zIndex = Math.round(s * 100);
         if (Math.abs(d) < best) { best = Math.abs(d); near = i; }
       });
-      items.forEach(function (it, i) { it.classList.toggle('is-near', x != null && i === near && best < RANGE); });
-      // keep the spot under the pointer under it while the remotes grow (see js/dock.js)
-      if (x == null || near < 0 || !restW[near]) { dock.style.setProperty('--shift', '0px'); return; }
-      var f = Math.max(0, Math.min(1, (x - (rest[near] - restW[near] / 2)) / restW[near]));
-      var shift = parseFloat(dock.style.getPropertyValue('--shift')) || 0;
-      var r = items[near].getBoundingClientRect();
-      var want = dock.getBoundingClientRect().left - dock.scrollLeft + x;
-      dock.style.setProperty('--shift', (want - (r.left - shift + f * r.width)).toFixed(1) + 'px');
+      // keep the spot under the pointer under it while the remotes grow (js/dockpan.js)
+      if (x == null || !restW.length) dock.style.setProperty('--shift', '0px');
+      else window.DockPan.anchor(items, rest, restW, dock, x);
+      var shown = x == null ? -1 : window.DockPan.under(items, dock, x, cy);
+      items.forEach(function (it, i) { it.classList.toggle('is-near', i === shown && best < RANGE); });
     }
     function schedule() { if (!frame) frame = requestAnimationFrame(paint); }
 
@@ -63,6 +60,7 @@
       if (!wide.matches || e.pointerType === 'touch') return;
       dock.classList.remove('is-settling');
       cx = e.clientX;
+      cy = e.clientY;
       x = e.clientX - dock.getBoundingClientRect().left + dock.scrollLeft;
       schedule();
     });
@@ -73,9 +71,10 @@
       dock.classList.add('is-settling');
       x = null;
       cx = null;
+      cy = null;
       schedule();
     });
-    var cx = null;
+    var cx = null, cy = null;
     var pan = window.DockPan && DockPan.attach(dock.parentNode, dock, {
       active: function () { return wide.matches; },
       onMove: function () {

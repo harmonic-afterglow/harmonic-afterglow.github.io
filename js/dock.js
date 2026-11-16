@@ -86,28 +86,27 @@
       setScale(it, x == null ? 1 : falloff(d, DESK_RANGE, DESK_MAX));
       if (Math.abs(d) < best) { best = Math.abs(d); nearest = i; }
     });
+    anchor(x);
+    // the label goes with the remote actually drawn under the pointer
+    var shown = x == null ? -1 : window.DockPan.under(items, dock, x, lastClientY);
     items.forEach(function (it, i) {
-      it.classList.toggle('is-near', x != null && i === nearest && best < DESK_RANGE);
+      it.classList.toggle('is-near', i === shown && best < DESK_RANGE);
     });
-    anchor(x, nearest);
   }
 
   // Growing remotes push their neighbours, and a centred row moves as a whole, so the remote
   // under the pointer would drift from it. Slide the row so the spot the pointer is on stays
   // under it, as the macOS dock does.
-  function anchor(x, k) {
-    if (x == null || k < 0 || !restW[k]) { dock.style.setProperty('--shift', '0px'); return; }
-    var f = Math.max(0, Math.min(1, (x - (rest[k] - restW[k] / 2)) / restW[k]));
-    var shift = parseFloat(dock.style.getPropertyValue('--shift')) || 0;
-    var r = items[k].getBoundingClientRect();
-    var want = dock.getBoundingClientRect().left - dock.scrollLeft + x;
-    dock.style.setProperty('--shift', (want - (r.left - shift + f * r.width)).toFixed(1) + 'px');
+  function anchor(x) {
+    if (x == null || !restW.length) { dock.style.setProperty('--shift', '0px'); return; }
+    window.DockPan.anchor(items, rest, restW, dock, x);
   }
 
   dock.addEventListener('pointermove', function (e) {
     if (!desktop.matches || e.pointerType === 'touch') return;
     dock.classList.remove('is-settling');
     lastClientX = e.clientX;
+    lastClientY = e.clientY;
     pointerX = e.clientX - dock.getBoundingClientRect().left + dock.scrollLeft;
     schedule();
   });
@@ -121,11 +120,12 @@
     dock.classList.add('is-settling');
     pointerX = null;
     lastClientX = null;
+    lastClientY = null;
     schedule();
   });
 
   // too many remotes for the stage: arrows, and panning near the edges
-  var lastClientX = null;
+  var lastClientX = null, lastClientY = null;
   var pan = window.DockPan && DockPan.attach(stage, dock, {
     active: function () { return desktop.matches && !isOpen(); },
     hidden: isOpen,
