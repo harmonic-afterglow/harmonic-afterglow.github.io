@@ -312,8 +312,10 @@
       items.forEach(function (it, i) {
         if (i === index) return;
         var gap = Math.abs(i - index);
-        // animate the list item: on phones the button's own transform holds its size
-        it.parentNode.animate([{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'none' }],
+        // animate the list item: on phones the button's own transform holds its size. Use
+        // `translate`, not `transform`: the item's transform carries the row's slide (--shift),
+        // and replacing it mid-animation made the anchoring chase itself across the row
+        it.parentNode.animate([{ opacity: 0, translate: '0 18px' }, { opacity: 1, translate: '0 0' }],
           { duration: 340, delay: 120 + gap * 60, easing: 'ease-out', fill: 'backwards' });
       });
     }
