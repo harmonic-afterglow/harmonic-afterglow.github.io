@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preload" href="fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/fonts.css?v=b1ec3b3e4f">
-<link rel="stylesheet" href="css/site.css?v=3e016d600b">
+<link rel="stylesheet" href="css/site.css?v=a688007caa">
 <script>
   /* 'js' lets the CSS show script-driven parts from the first paint. The page itself stays
      unpainted until its font is in and its scripts have run (a moment with the font preload
@@ -74,13 +74,15 @@
         <h1>Remotes</h1>
         <p>Each Harmony model stores its setup differently, so each one is added on its own and
           tested on real remotes before it's called supported.</p>
+        <!-- with JavaScript the labels filter the dock, and each one's meaning shows on hover -->
         <ul class="status-key" aria-label="What the labels mean">
-          <li><span class="status status-ok">Supported</span> <span>In every release and tested on real remotes.</span></li>
-          <li><span class="status status-warn">Experimental</span> <span>Works, but few people have tried it yet. Please report how it goes.</span></li>
-          <li><span class="status status-beta">Beta</span> <span>In a public test build on the <a href="download.html">download page</a>, not yet in a release.</span></li>
-          <li><span class="status status-test">Testing</span> <span>Being tried privately with volunteers on <a href="https://discord.gg/GEUdc2FfRH">Discord</a>; not in any download yet.</span></li>
-          <li><span class="status status-want">Wanted</span> <span>Ready to add as soon as someone with one sends us its configuration on <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</span></li>
-          <li><span class="status status-plan">Planned</span> <span>Not usable with Afterglow yet.</span></li>
+          <li><button class="status status-ok" type="button" data-status="ok" aria-pressed="false" aria-describedby="tip-ok">Supported</button> <span class="status-tip" id="tip-ok">In every release and tested on real remotes.</span></li>
+          <li><button class="status status-warn" type="button" data-status="warn" aria-pressed="false" aria-describedby="tip-warn">Experimental</button> <span class="status-tip" id="tip-warn">Works, but few people have tried it yet. Please report how it goes.</span></li>
+          <li><button class="status status-beta" type="button" data-status="beta" aria-pressed="false" aria-describedby="tip-beta">Beta</button> <span class="status-tip" id="tip-beta">In a public test build on the <a href="download.html">download page</a>, not yet in a release.</span></li>
+          <li><button class="status status-test" type="button" data-status="test" aria-pressed="false" aria-describedby="tip-test">Testing</button> <span class="status-tip" id="tip-test">Being tried privately with volunteers on <a href="https://discord.gg/GEUdc2FfRH">Discord</a>; not in any download yet.</span></li>
+          <li><button class="status status-want" type="button" data-status="want" aria-pressed="false" aria-describedby="tip-want">Wanted</button> <span class="status-tip" id="tip-want">Ready to add as soon as someone with one sends us its configuration on <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</span></li>
+          <li><button class="status status-plan" type="button" data-status="plan" aria-pressed="false" aria-describedby="tip-plan">Planned</button> <span class="status-tip" id="tip-plan">Not usable with Afterglow yet.</span></li>
+          <li class="status-all" hidden><button type="button">Show all</button></li>
         </ul>
       </div>
 
@@ -467,6 +469,6 @@
 </footer>
 <script src="js/releases.js?v=2af3d71e98"></script>
 <script src="js/dockpan.js?v=6278d860b4"></script>
-<script src="js/dock.js?v=5a4f1e77d4"></script>
+<script src="js/dock.js?v=24c071d9e8"></script>
 </body>
 </html>

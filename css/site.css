@@ -1244,3 +1244,52 @@ pre {
 @media (prefers-reduced-motion: no-preference) {
   .btn, .tabs a, .remote-strip a { transition: background-color .15s; }
 }
+
+/* ---------- status filter (Remotes page, with JavaScript) ----------
+   The labels in the key become toggles: none pressed shows every remote, pressed ones show
+   only remotes with that label. Each label's meaning moves into a tooltip. */
+.js .status-key { flex-direction: row; gap: 8px; align-items: center; }
+.js .status-key li { position: relative; }
+.status-key button.status { border: 0; font: inherit; font-size: 11px; font-weight: 600; cursor: default; }
+.js .status-key button.status { padding: 5px 12px 6px; border-radius: 3px; font-size: 12.5px; }
+.js .status-key button.status { cursor: pointer; transition: opacity .15s, box-shadow .15s; }
+.js .status-key button.status:hover { filter: brightness(1.08); }
+.js .status-key.is-filtering button.status[aria-pressed="false"] { opacity: .4; }
+.js .status-key button.status[aria-pressed="true"] {
+  box-shadow: inset 0 1px rgba(255, 255, 255, .3), 0 0 0 2px #fff, 0 0 0 3px rgba(0, 0, 0, .35);
+}
+.js .status-tip {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  z-index: 30;
+  width: max-content;
+  max-width: 260px;
+  margin-top: 6px;
+  padding: 6px 9px;
+  border-radius: 3px;
+  background: #2b2e33;
+  color: #f1f2f4;
+  font-size: 12px;
+  line-height: 1.4;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, .25);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .12s, visibility .12s;
+}
+.js .status-tip::before {               /* bridges the gap so the pointer can reach a link */
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: -8px; height: 8px;
+}
+.js .status-tip a { color: #ffb36b; }
+.js .status-key li:hover .status-tip,
+.js .status-key li:has(:focus-visible) .status-tip { opacity: 1; visibility: visible; transition-delay: .25s; }
+.status-all button {
+  border: 0; padding: 0; background: none; font: inherit; font-size: 12px;
+  color: var(--link, #c8620e); cursor: pointer; text-decoration: underline;
+}
+.status-all[hidden] { display: none; }
+.dock li[hidden] { display: none; }
+.dock li.is-first { margin-left: auto; }   /* centred while everything fits, filtered or not */
+.dock li.is-last { margin-right: auto; }

@@ -190,7 +190,7 @@
       if (quietFocus) return;
       if (desktop.matches) {
         dock.classList.add('is-settling');
-        pointerX = rest[i];
+        pointerX = rest[items.indexOf(it)];
         schedule();
       } else {
         centre(i, true);
@@ -370,6 +370,65 @@
       follow();
     }
   }
+
+  // ---------- filter by status ----------
+  // The key's labels are toggles. None pressed: every remote. Otherwise only remotes that carry
+  // a pressed label (a remote with two labels shows if either is pressed).
+  var all = items.slice();
+  var key = document.querySelector('.status-key');
+  var statusOf = function (it) {
+    return Array.prototype.map.call(it.querySelectorAll('.dock-label .status'), function (el) {
+      var m = /status-(\w+)/.exec(el.className);
+      return m && m[1];
+    });
+  };
+  function markEnds() {
+    all.forEach(function (it) { it.parentNode.classList.remove('is-first', 'is-last'); });
+    if (!items.length) return;
+    items[0].parentNode.classList.add('is-first');
+    items[items.length - 1].parentNode.classList.add('is-last');
+  }
+  function applyFilter() {
+    var on = Array.prototype.filter.call(key.querySelectorAll('button[data-status]'), function (b) {
+      return b.getAttribute('aria-pressed') === 'true';
+    }).map(function (b) { return b.dataset.status; });
+    key.classList.toggle('is-filtering', on.length > 0);
+    key.querySelector('.status-all').hidden = !on.length;
+    var before = items;
+    items = all.filter(function (it) {
+      return !on.length || statusOf(it).some(function (st) { return on.indexOf(st) >= 0; });
+    });
+    all.forEach(function (it) { it.parentNode.hidden = items.indexOf(it) < 0; });
+    markEnds();
+    pointerX = null;
+    picked = -1;
+    dock.scrollLeft = 0;
+    layout();
+    if (!desktop.matches && items.length) { centre(0, false); follow(); }
+    if (!still.matches) {
+      items.forEach(function (it, i) {
+        if (before.indexOf(it) >= 0) return;   // only the ones that just came back
+        it.parentNode.animate([{ opacity: 0, translate: '0 14px' }, { opacity: 1, translate: '0 0' }],
+          { duration: 280, delay: Math.min(i, 12) * 25, easing: 'ease-out', fill: 'backwards' });
+      });
+    }
+  }
+  if (key) {
+    key.addEventListener('click', function (e) {
+      var b = e.target.closest('button');
+      if (!b) return;
+      if (b.dataset.status) {
+        b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') === 'true' ? 'false' : 'true');
+      } else {
+        Array.prototype.forEach.call(key.querySelectorAll('button[data-status]'), function (x) {
+          x.setAttribute('aria-pressed', 'false');
+        });
+      }
+      if (isOpen()) back.click();
+      applyFilter();
+    });
+  }
+  markEnds();
 
   window.addEventListener('hashchange', function () { route(true); });
   window.addEventListener('resize', layout);
