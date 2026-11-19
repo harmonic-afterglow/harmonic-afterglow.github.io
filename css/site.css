@@ -415,6 +415,7 @@ img { max-width: 100%; }
 .status-key { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: 12px 0 0; padding: 0; list-style: none;
   font-size: 12px; color: var(--ink-soft); }
 .status-key li { display: flex; align-items: baseline; gap: 6px; }
+.status-want { background: linear-gradient(#3fb3a9, #1f8077); }
 .status-plan { background: linear-gradient(#9a9fa7, var(--plan)); }
 
 /* remotes on the home page: a small dock; every remote links to its details */
@@ -560,6 +561,8 @@ pre {
 .remote-info h2 { display: flex; align-items: center; gap: 10px; margin: 0 0 4px; font-size: 22px; font-weight: 400; }
 .remote-info .year { margin: 0 0 12px; color: var(--ink-faint); font-size: 12px; }
 .remote-info ul { margin: 0 0 10px; padding-left: 18px; }
+/* how to get it or help with it, kept apart from what the remote does */
+.remote-info .remote-cta { margin: 12px 0 0; padding-top: 10px; border-top: 1px solid var(--rule); color: var(--ink-soft); font-size: 13px; }
 .remote-info li { margin: 2px 0; }
 
 /* ---------- remotes dock (desktop, with JavaScript) ---------- */

@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Which Logitech Harmony remotes work – Afterglow</title>
-<meta name="description" content="Which Logitech Harmony remotes Afterglow can set up: the Harmony 900 and the One and One+ (in the beta), the 1100 as an experiment, the 800, 600, 650, 665 and 700 in beta, and the 688, 510, 515, 520, 525, 550, 555 and Harmony for Xbox 360 in testing.">
+<meta name="description" content="Which Logitech Harmony remotes Afterglow can set up: the Harmony 900 and the One and One+ (in the beta), the 1100 as an experiment, the 800, 600, 650, 665 and 700 in beta, and the 688, 670, 676, 510, 515, 520, 550, 555, SST-768 and Harmony for Xbox 360 in testing.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Afterglow">
 <meta property="og:title" content="Which Logitech Harmony remotes work with Afterglow">
-<meta property="og:description" content="Which Logitech Harmony remotes Afterglow can set up: the Harmony 900 and the One and One+ (in the beta), the 1100 as an experiment, the 800, 600, 650, 665 and 700 in beta, and the 688, 510, 515, 520, 525, 550, 555 and Harmony for Xbox 360 in testing.">
+<meta property="og:description" content="Which Logitech Harmony remotes Afterglow can set up: the Harmony 900 and the One and One+ (in the beta), the 1100 as an experiment, the 800, 600, 650, 665 and 700 in beta, and the 688, 670, 676, 510, 515, 520, 550, 555, SST-768 and Harmony for Xbox 360 in testing.">
 <meta property="og:url" content="https://harmonic-afterglow.github.io/remotes.html">
 <meta property="og:image" content="https://harmonic-afterglow.github.io/img/preview.jpg">
 <meta property="og:image:width" content="1200">
@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preload" href="fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/fonts.css?v=b1ec3b3e4f">
-<link rel="stylesheet" href="css/site.css?v=a94f8fea1a">
+<link rel="stylesheet" href="css/site.css?v=3e016d600b">
 <script>
   /* 'js' lets the CSS show script-driven parts from the first paint. The page itself stays
      unpainted until its font is in and its scripts have run (a moment with the font preload
@@ -79,33 +79,59 @@
           <li><span class="status status-warn">Experimental</span> <span>Works, but few people have tried it yet. Please report how it goes.</span></li>
           <li><span class="status status-beta">Beta</span> <span>In a public test build on the <a href="download.html">download page</a>, not yet in a release.</span></li>
           <li><span class="status status-test">Testing</span> <span>Being tried privately with volunteers on <a href="https://discord.gg/GEUdc2FfRH">Discord</a>; not in any download yet.</span></li>
+          <li><span class="status status-want">Wanted</span> <span>Ready to add as soon as someone with one sends us its configuration on <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</span></li>
           <li><span class="status status-plan">Planned</span> <span>Not usable with Afterglow yet.</span></li>
         </ul>
       </div>
 
       <section class="dock-stage" aria-label="Remotes">
+        <!-- each remote is drawn at its real length: --h 260px is 222 mm -->
         <ul class="dock">
-          <li><button class="dock-item" type="button" data-target="harmony-688" style="--h: 260px">
+          <li><button class="dock-item" type="button" data-target="harmony-sst745" style="--h: 157px">
+            <img width="234" height="640" src="img/remotes/harmony-sst745-h640.webp" srcset="img/remotes/harmony-sst745-h640.webp 1x, img/remotes/harmony-sst745-h1200.webp 2x, img/remotes/harmony-sst745-h1800.webp 3x" data-large="img/remotes/harmony-sst745-h960.webp" data-large-srcset="img/remotes/harmony-sst745-h960.webp 1x, img/remotes/harmony-sst745-h1800.webp 2x" alt="">
+            <span class="dock-label"><strong>Harmony SST-745</strong> <span class="status status-want">Wanted</span></span>
+          </button></li>
+          <li><button class="dock-item" type="button" data-target="harmony-sst748" style="--h: 182px">
+            <img width="220" height="640" src="img/remotes/harmony-sst748-h640.webp" srcset="img/remotes/harmony-sst748-h640.webp 1x, img/remotes/harmony-sst748-h1200.webp 2x, img/remotes/harmony-sst748-h1800.webp 3x" data-large="img/remotes/harmony-sst748-h960.webp" data-large-srcset="img/remotes/harmony-sst748-h960.webp 1x, img/remotes/harmony-sst748-h1800.webp 2x" alt="">
+            <span class="dock-label"><strong>Harmony SST-748</strong> <span class="status status-want">Wanted</span></span>
+          </button></li>
+          <li><button class="dock-item" type="button" data-target="harmony-sst768" style="--h: 182px">
+            <img width="220" height="640" src="img/remotes/harmony-sst768-h640.webp" srcset="img/remotes/harmony-sst768-h640.webp 1x, img/remotes/harmony-sst768-h1200.webp 2x, img/remotes/harmony-sst768-h1800.webp 3x" data-large="img/remotes/harmony-sst768-h960.webp" data-large-srcset="img/remotes/harmony-sst768-h960.webp 1x, img/remotes/harmony-sst768-h1800.webp 2x" alt="">
+            <span class="dock-label"><strong>Harmony SST-768</strong> <span class="status status-test">Testing</span></span>
+          </button></li>
+          <li><button class="dock-item" type="button" data-target="harmony-688" style="--h: 241px">
             <img width="182" height="640" src="img/remotes/harmony-688-h640.webp" srcset="img/remotes/harmony-688-h640.webp 1x, img/remotes/harmony-688-h1200.webp 2x, img/remotes/harmony-688-h1800.webp 3x" data-large="img/remotes/harmony-688-h960.webp" data-large-srcset="img/remotes/harmony-688-h960.webp 1x, img/remotes/harmony-688-h1800.webp 2x" alt="">
             <span class="dock-label"><strong>Harmony 688</strong> <span class="status status-test">Testing</span></span>
           </button></li>
-          <li><button class="dock-item" type="button" data-target="harmony-880" style="--h: 260px">
+          <li><button class="dock-item" type="button" data-target="harmony-670" style="--h: 241px">
+            <img width="183" height="640" src="img/remotes/harmony-670-h640.webp" srcset="img/remotes/harmony-670-h640.webp 1x" data-large="img/remotes/harmony-670-h640.webp" data-large-srcset="img/remotes/harmony-670-h640.webp 1x" alt="">
+            <span class="dock-label"><strong>Harmony 670</strong> <span class="status status-test">Testing</span></span>
+          </button></li>
+          <li><button class="dock-item" type="button" data-target="harmony-676" style="--h: 241px">
+            <img width="183" height="640" src="img/remotes/harmony-676-h640.webp" srcset="img/remotes/harmony-676-h640.webp 1x" data-large="img/remotes/harmony-676-h640.webp" data-large-srcset="img/remotes/harmony-676-h640.webp 1x" alt="">
+            <span class="dock-label"><strong>Harmony 676</strong> <span class="status status-test">Testing</span></span>
+          </button></li>
+          <li><button class="dock-item" type="button" data-target="harmony-880" style="--h: 241px">
             <img width="183" height="640" src="img/remotes/harmony-880-h640.webp" srcset="img/remotes/harmony-880-h640.webp 1x, img/remotes/harmony-880-h960.webp 2x" data-large="img/remotes/harmony-880-h960.webp" data-large-srcset="img/remotes/harmony-880-h960.webp 1x" alt="">
             <span class="dock-label"><strong>Harmony 880</strong> <span class="status status-plan">Planned</span></span>
           </button></li>
-          <li><button class="dock-item" type="button" data-target="harmony-520" style="--h: 260px">
+          <li><button class="dock-item" type="button" data-target="harmony-520" style="--h: 241px">
             <img width="164" height="640" src="img/remotes/harmony-520-h640.webp" srcset="img/remotes/harmony-520-h640.webp 1x" data-large="img/remotes/harmony-520-h640.webp" data-large-srcset="img/remotes/harmony-520-h640.webp 1x" alt="">
-            <span class="dock-label"><strong>Harmony 520 / 525 / 522</strong> <span class="status status-test">Testing</span></span>
+            <span class="dock-label"><strong>Harmony 520</strong> <span class="status status-test">Testing</span></span>
           </button></li>
-          <li><button class="dock-item" type="button" data-target="harmony-555" style="--h: 260px">
+          <li><button class="dock-item" type="button" data-target="harmony-522" style="--h: 241px">
+            <img width="164" height="640" src="img/remotes/harmony-522-h640.webp" srcset="img/remotes/harmony-522-h640.webp 1x" data-large="img/remotes/harmony-522-h640.webp" data-large-srcset="img/remotes/harmony-522-h640.webp 1x" alt="">
+            <span class="dock-label"><strong>Harmony 522</strong> <span class="status status-want">Wanted</span></span>
+          </button></li>
+          <li><button class="dock-item" type="button" data-target="harmony-555" style="--h: 241px">
             <img width="166" height="640" src="img/remotes/harmony-555-h640.webp" srcset="img/remotes/harmony-555-h640.webp 1x, img/remotes/harmony-555-h960.webp 2x" data-large="img/remotes/harmony-555-h960.webp" data-large-srcset="img/remotes/harmony-555-h960.webp 1x" alt="">
-            <span class="dock-label"><strong>Harmony 550 / 555 / 552</strong> <span class="status status-test">Testing</span></span>
+            <span class="dock-label"><strong>Harmony 550 / 555</strong> <span class="status status-test">Testing</span></span>
           </button></li>
-          <li><button class="dock-item" type="button" data-target="harmony-xbox360" style="--h: 260px">
+          <li><button class="dock-item" type="button" data-target="harmony-xbox360" style="--h: 241px">
             <img width="170" height="640" src="img/remotes/harmony-xbox360-h640.webp" srcset="img/remotes/harmony-xbox360-h640.webp 1x" data-large="img/remotes/harmony-xbox360-h960.webp" data-large-srcset="img/remotes/harmony-xbox360-h960.webp 1x" alt="">
             <span class="dock-label"><strong>Harmony for Xbox 360</strong> <span class="status status-test">Testing</span></span>
           </button></li>
-          <li><button class="dock-item" type="button" data-target="harmony-510" style="--h: 260px">
+          <li><button class="dock-item" type="button" data-target="harmony-510" style="--h: 241px">
             <img width="163" height="640" src="img/remotes/harmony-510-h640.webp" srcset="img/remotes/harmony-510-h640.webp 1x" data-large="img/remotes/harmony-510-h640.webp" data-large-srcset="img/remotes/harmony-510-h640.webp 1x" alt="">
             <span class="dock-label"><strong>Harmony 510 / 515</strong> <span class="status status-test">Testing</span></span>
           </button></li>
@@ -117,7 +143,7 @@
             <img width="168" height="640" src="img/remotes/harmony-900-h640.webp" srcset="img/remotes/harmony-900-h640.webp 1x, img/remotes/harmony-900-h1200.webp 2x, img/remotes/harmony-900-h1800.webp 3x" data-large="img/remotes/harmony-900-h960.webp" data-large-srcset="img/remotes/harmony-900-h960.webp 1x, img/remotes/harmony-900-h1800.webp 2x" alt="">
             <span class="dock-label"><strong>Harmony 900</strong> <span class="status status-ok">Supported</span></span>
           </button></li>
-          <li><button class="dock-item is-wide" type="button" data-target="harmony-1100" style="--h: 170px">
+          <li><button class="dock-item is-wide" type="button" data-target="harmony-1100" style="--h: 122px">
             <img width="640" height="480" src="img/remotes/harmony-1100-w640.webp" srcset="img/remotes/harmony-1100-w640.webp 1x, img/remotes/harmony-1100-w960.webp 2x, img/remotes/harmony-1100-w1200.webp 3x" data-large="img/remotes/harmony-1100-w960.webp" data-large-srcset="img/remotes/harmony-1100-w960.webp 1x, img/remotes/harmony-1100-w1800.webp 2x" alt="">
             <span class="dock-label"><strong>Harmony 1100</strong> <span class="status status-warn">Experimental</span></span>
           </button></li>
@@ -156,7 +182,7 @@
             </div>
             <div class="remote-info">
               <h2>Harmony 900 <span class="status status-ok">Supported</span></h2>
-              <p class="year">2009 · touchscreen remote with RF blaster</p>
+              <p class="year">2009</p>
               <p>Everything you could set up with Logitech's software:</p>
               <ul>
                 <li>Devices and activities, including which device each button controls in an activity</li>
@@ -174,7 +200,7 @@
             </div>
             <div class="remote-info">
               <h2>Harmony 1100 <span class="status status-warn">Experimental</span></h2>
-              <p class="year">2009 · 3.5-inch touchscreen</p>
+              <p class="year">2009</p>
               <p>Afterglow reads, imports, builds and writes 1100 configurations. Before each write it
                 saves what's on the remote, so you can always put it back.</p>
               <ul>
@@ -191,7 +217,7 @@
             </div>
             <div class="remote-info">
               <h2>Harmony One / One+ <span class="status status-ok">Supported</span> <span class="status status-beta">Beta</span></h2>
-              <p class="year">2008 · touchscreen remote</p>
+              <p class="year">2008</p>
               <p>The later Harmony One+ is the same remote with newer software inside. Afterglow
                 sets up both the same way, so everything here goes for either.</p>
               <p>The One is supported in the beta. Afterglow builds its setup from your devices and
@@ -199,11 +225,8 @@
               <ul>
                 <li>Devices and activities with their pages, favourite channels, and the welcome after flashing</li>
                 <li>Its settings: how long the screen stays lit, the 12- or 24-hour clock, the Remote Assistant and the language</li>
-                <li>A custom look, kept as a theme, and text in any script, Cyrillic included</li>
-                <li>Moving up to a Harmony 900 or 1100 takes its commands along</li>
-                <li>Get the beta from the <a href="download.html">download page</a>, under “Try the next version”.</li>
-                <li>Tell us how it goes on the <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</li>
               </ul>
+              <p class="remote-cta">Get the beta from the <a href="download.html">download page</a>, under “Try the next version”, and tell us how it goes on the <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</p>
             </div>
           </article>
 
@@ -213,16 +236,15 @@
             </div>
             <div class="remote-info">
               <h2>Harmony 800 <span class="status status-warn">Experimental</span> <span class="status status-beta">Beta</span></h2>
-              <p class="year">Prototype, never sold · touchscreen and slide-out keyboard</p>
+              <p class="year">Prototype, never sold</p>
               <p>Logitech never sold the 800; only prototypes exist. Afterglow builds its setup from your
                 devices and activities, as it does for the One, and a tester's remote runs it: activities
                 and devices send their commands, and it sleeps and wakes as it should. It's in the beta and
                 comes to a release with the One. So few exist that it stays experimental.</p>
               <ul>
                 <li>The slide-out keyboard, the touchpad and learning from other remotes aren't supported yet.</li>
-                <li>Get the beta from the <a href="download.html">download page</a>, under “Try the next version”.</li>
-                <li>Tell us how it goes on the <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</li>
               </ul>
+              <p class="remote-cta">Get the beta from the <a href="download.html">download page</a>, under “Try the next version”, and tell us how it goes on the <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</p>
             </div>
           </article>
           <article class="remote" id="harmony-650">
@@ -231,7 +253,7 @@
             </div>
             <div class="remote-info">
               <h2>Harmony 650 / 665 <span class="status status-warn">Experimental</span> <span class="status status-beta">Beta</span></h2>
-              <p class="year">2010 · colour screen</p>
+              <p class="year">2010</p>
               <p>The 665 is the 650's later version. Afterglow sets both up the same way: it reads what's
                 on your remote and builds and writes a new setup. Before each write it saves what's on the
                 remote, so you can always put it back.</p>
@@ -240,9 +262,8 @@
                 <li>Choose which activity Watch TV, Watch a Movie and Listen to Music start</li>
                 <li>Favourite channels by name; these remotes show no logos</li>
                 <li>Logitech's welcome tour after the first flash</li>
-                <li>Get the beta from the <a href="download.html">download page</a>, under “Try the next version”.</li>
-                <li>Tell us how it goes on the <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</li>
               </ul>
+              <p class="remote-cta">Get the beta from the <a href="download.html">download page</a>, under “Try the next version”, and tell us how it goes on the <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</p>
             </div>
           </article>
           <article class="remote" id="harmony-700">
@@ -251,13 +272,10 @@
             </div>
             <div class="remote-info">
               <h2>Harmony 700 <span class="status status-warn">Experimental</span> <span class="status status-beta">Beta</span></h2>
-              <p class="year">2009 · colour screen and rechargeable batteries</p>
+              <p class="year">2009</p>
               <p>The 700 is the 650 with a rechargeable battery, and Afterglow sets it up the same way:
                 devices and activities, the activity buttons, favourite channels and the welcome tour.</p>
-              <ul>
-                <li>Get the beta from the <a href="download.html">download page</a>, under “Try the next version”.</li>
-                <li>Tell us how it goes on the <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</li>
-              </ul>
+              <p class="remote-cta">Get the beta from the <a href="download.html">download page</a>, under “Try the next version”, and tell us how it goes on the <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</p>
             </div>
           </article>
           <article class="remote" id="harmony-880">
@@ -266,7 +284,7 @@
             </div>
             <div class="remote-info">
               <h2>Harmony 880 <span class="status status-plan">Planned</span></h2>
-              <p class="year">2005 · colour screen and charging cradle</p>
+              <p class="year">2005</p>
               <p>Support is planned. It can't be set up with Afterglow yet.</p>
             </div>
           </article>
@@ -276,12 +294,71 @@
             </div>
             <div class="remote-info">
               <h2>Harmony 688 <span class="status status-test">Testing</span></h2>
-              <p class="year">2004 · black-and-white screen</p>
+              <p class="year">2004</p>
               <p>Being tried privately with volunteers before it comes to a public beta. It isn't in any
                 download yet.</p>
-              <ul>
-                <li>Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</li>
-              </ul>
+              <p class="remote-cta">Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</p>
+            </div>
+          </article>
+          <article class="remote" id="harmony-670">
+            <div class="remote-photo">
+              <img src="img/remotes/harmony-670-h320.webp" srcset="img/remotes/harmony-670-h320.webp 1x, img/remotes/harmony-670-h640.webp 2x" width="74" height="260" alt="Harmony 670, front">
+            </div>
+            <div class="remote-info">
+              <h2>Harmony 670 <span class="status status-test">Testing</span></h2>
+              <p class="year">2006</p>
+              <p>The same kind of remote inside as the 688.</p>
+              <p>Being tried privately with volunteers before it comes to a public beta. It isn't in any
+                download yet.</p>
+              <p class="remote-cta">Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</p>
+            </div>
+          </article>
+          <article class="remote" id="harmony-676">
+            <div class="remote-photo">
+              <img src="img/remotes/harmony-676-h320.webp" srcset="img/remotes/harmony-676-h320.webp 1x, img/remotes/harmony-676-h640.webp 2x" width="74" height="260" alt="Harmony 676, front">
+            </div>
+            <div class="remote-info">
+              <h2>Harmony 676 <span class="status status-test">Testing</span></h2>
+              <p class="year">2004</p>
+              <p>The 688's sibling, and the same kind of remote inside.</p>
+              <p>Being tried privately with volunteers before it comes to a public beta. It isn't in any
+                download yet.</p>
+              <p class="remote-cta">Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</p>
+            </div>
+          </article>
+          <article class="remote" id="harmony-sst745">
+            <div class="remote-photo">
+              <img src="img/remotes/harmony-sst745-h320.webp" srcset="img/remotes/harmony-sst745-h320.webp 1x, img/remotes/harmony-sst745-h640.webp 2x, img/remotes/harmony-sst745-h960.webp 3x" width="95" height="260" alt="Harmony SST-745, front: the EasyZapper version">
+            </div>
+            <div class="remote-info">
+              <h2>Harmony SST-745 <span class="status status-want">Wanted</span></h2>
+              <p class="year">2002</p>
+              <p>This is the EasyZapper version. The same remote was also sold with HarmonyRemote.com on its face.</p>
+              <p>Afterglow can support it as soon as someone with one sends us its configuration.</p>
+              <p class="remote-cta">Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and send us its configuration.</p>
+            </div>
+          </article>
+          <article class="remote" id="harmony-sst748">
+            <div class="remote-photo">
+              <img src="img/remotes/harmony-sst748-h320.webp" srcset="img/remotes/harmony-sst748-h320.webp 1x, img/remotes/harmony-sst748-h640.webp 2x, img/remotes/harmony-sst748-h960.webp 3x" width="89" height="260" alt="Harmony SST-748, front">
+            </div>
+            <div class="remote-info">
+              <h2>Harmony SST-748 <span class="status status-want">Wanted</span></h2>
+              <p class="year">2003</p>
+              <p>Afterglow can support it as soon as someone with one sends us its configuration.</p>
+              <p class="remote-cta">Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and send us its configuration.</p>
+            </div>
+          </article>
+          <article class="remote" id="harmony-sst768">
+            <div class="remote-photo">
+              <img src="img/remotes/harmony-sst768-h320.webp" srcset="img/remotes/harmony-sst768-h320.webp 1x, img/remotes/harmony-sst768-h640.webp 2x, img/remotes/harmony-sst768-h960.webp 3x" width="89" height="260" alt="Harmony SST-768, front">
+            </div>
+            <div class="remote-info">
+              <h2>Harmony SST-768 <span class="status status-test">Testing</span></h2>
+              <p class="year">2003</p>
+              <p>Being tried privately with volunteers before it comes to a public beta. It isn't in any
+                download yet.</p>
+              <p class="remote-cta">Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</p>
             </div>
           </article>
           <article class="remote" id="harmony-555">
@@ -289,14 +366,12 @@
               <img src="img/remotes/harmony-555-h320.webp" srcset="img/remotes/harmony-555-h320.webp 1x, img/remotes/harmony-555-h640.webp 2x, img/remotes/harmony-555-h960.webp 3x" width="67" height="260" alt="Harmony 555, front">
             </div>
             <div class="remote-info">
-              <h2>Harmony 550 / 555 / 552 <span class="status status-test">Testing</span></h2>
-              <p class="year">2006 · backlit screen</p>
-              <p>The 555 and the Japanese Logicool 552 are versions of the 550. Afterglow sets them all up the same way.</p>
+              <h2>Harmony 550 / 555 <span class="status status-test">Testing</span></h2>
+              <p class="year">2006</p>
+              <p>The 555 is a version of the 550. Afterglow sets both up the same way.</p>
               <p>Being tried privately with volunteers before it comes to a public beta. It isn't in any
                 download yet.</p>
-              <ul>
-                <li>Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</li>
-              </ul>
+              <p class="remote-cta">Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</p>
             </div>
           </article>
           <article class="remote" id="harmony-600">
@@ -305,13 +380,10 @@
             </div>
             <div class="remote-info">
               <h2>Harmony 600 <span class="status status-warn">Experimental</span> <span class="status status-beta">Beta</span></h2>
-              <p class="year">2010 · black-and-white screen</p>
+              <p class="year">2010</p>
               <p>Set up the same way as the 650, in the 600's own grey look: devices and activities,
                 the activity buttons, favourite channels and the welcome tour.</p>
-              <ul>
-                <li>Get the beta from the <a href="download.html">download page</a>, under “Try the next version”.</li>
-                <li>Tell us how it goes on the <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</li>
-              </ul>
+              <p class="remote-cta">Get the beta from the <a href="download.html">download page</a>, under “Try the next version”, and tell us how it goes on the <a href="https://discord.gg/GEUdc2FfRH">Discord</a>.</p>
             </div>
           </article>
           <article class="remote" id="harmony-520">
@@ -319,14 +391,23 @@
               <img src="img/remotes/harmony-520-h320.webp" srcset="img/remotes/harmony-520-h320.webp 1x, img/remotes/harmony-520-h640.webp 2x" width="67" height="260" alt="Harmony 520, front">
             </div>
             <div class="remote-info">
-              <h2>Harmony 520 / 525 / 522 <span class="status status-test">Testing</span></h2>
-              <p class="year">2005 · backlit screen</p>
-              <p>The 525 is the European 520, with four colour keys under the numbers, and the 522 is another version of it. Afterglow sets them all up the same way.</p>
+              <h2>Harmony 520 <span class="status status-test">Testing</span></h2>
+              <p class="year">2005</p>
               <p>Being tried privately with volunteers before it comes to a public beta. It isn't in any
                 download yet.</p>
-              <ul>
-                <li>Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</li>
-              </ul>
+              <p class="remote-cta">Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</p>
+            </div>
+          </article>
+          <article class="remote" id="harmony-522">
+            <div class="remote-photo">
+              <img src="img/remotes/harmony-522-h320.webp" srcset="img/remotes/harmony-522-h320.webp 1x, img/remotes/harmony-522-h640.webp 2x" width="67" height="260" alt="Harmony 522, front">
+            </div>
+            <div class="remote-info">
+              <h2>Harmony 522 <span class="status status-want">Wanted</span></h2>
+              <p class="year">2006</p>
+              <p>Sold only in Japan. Its 0, * and # keys double as 10, 11 and 12.</p>
+              <p>Afterglow can support it as soon as someone with one sends us its configuration.</p>
+              <p class="remote-cta">Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and send us its configuration.</p>
             </div>
           </article>
           <article class="remote" id="harmony-xbox360">
@@ -335,13 +416,11 @@
             </div>
             <div class="remote-info">
               <h2>Harmony for Xbox 360 <span class="status status-test">Testing</span></h2>
-              <p class="year">2006 · backlit screen</p>
+              <p class="year">2006</p>
               <p>Made for the Xbox 360, with its Y, X, A and B buttons and Guide and Live TV.</p>
               <p>Being tried privately with volunteers before it comes to a public beta. It isn't in any
                 download yet.</p>
-              <ul>
-                <li>Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</li>
-              </ul>
+              <p class="remote-cta">Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</p>
             </div>
           </article>
           <article class="remote" id="harmony-510">
@@ -350,13 +429,11 @@
             </div>
             <div class="remote-info">
               <h2>Harmony 510 / 515 <span class="status status-test">Testing</span></h2>
-              <p class="year">2007 · backlit screen</p>
+              <p class="year">2007</p>
               <p>The 510 and 515 are the same remote, in black and in silver. Afterglow sets both up the same way.</p>
               <p>Being tried privately with volunteers before it comes to a public beta. It isn't in any
                 download yet.</p>
-              <ul>
-                <li>Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</li>
-              </ul>
+              <p class="remote-cta">Own one? <a href="https://discord.gg/GEUdc2FfRH">Join the Discord</a> and ask to become a tester.</p>
             </div>
           </article>
         </div>
